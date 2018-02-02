@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- ***** General ***** -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sierrica</groupId>
+	<artifactId>aupair</artifactId>
+	<name>AuPair</name>
+	<description>App for AuPairs</description>
+	<url>http://aupair.sierrica.com</url>
+	<packaging>war</packaging>
+	<version>1.0.0</version>
+
+	<!-- ***** Pom inherited ***** -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+		<relativePath /><!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+
+	<!-- ***** Build ***** -->
+	<build>
+
+		<!-- Name of the war -> Needed for Openshift that call ROOT for deploy 
+			in the / -->
+		<finalName>ROOT</finalName>
+
+		<!-- Default Goai -->
+		<!-- <defaultGoal>clean spring-boot:run</defaultGoal> -->
+
+		<!-- Resources -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<!-- <exclude>public/www/index_cordova.html</exclude> -->
+					<exclude>private/**/*</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
+		<!-- Plugins -->
+		<plugins>
+
+			<!-- Spring Boot Maven plugin -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<!-- Exclude devtools from production jar file -->
+					<excludeDevtools>true</excludeDevtools>
+					<addResources>true</addResources>
+				</configuration>
+			</plugin>
+
+			<!-- Spring Boot Node-Npm plugin -->
+			<!-- <plugin>
+			    <groupId>com.github.eirslett</groupId>
+			    <artifactId>frontend-maven-plugin</artifactId>
+			    <version>1.6</version>
+			    <executions>
+			        <execution>
+			            <id>install node and npm</id>
+			            <goals>
+			                <goal>install-node-and-npm</goal>
+			            </goals>
+			            <configuration>
+			                <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
+			                <nodeVersion>v8.9.4</nodeVersion>
+			                <npmVersion>5.6.0</npmVersion>
+
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>npm install</id>
+			            <goals>
+			                <goal>npm</goal>
+			            </goals>
+			            <configuration>
+			                <arguments>install</arguments>
+			                <environmentVariables>
+			                    <NODE_ENV>${NODE_ENV}</NODE_ENV>
+			                </environmentVariables>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>npm run</id>
+			            <goals>
+			                <goal>npm</goal>
+			            </goals>
+			            <configuration>
+			                <arguments>run web-openshift</arguments>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin> -->
+			
+		</plugins>
+	</build>
+
+
+
+	<dependencies>
+		
+		<!-- Hot Reload -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- Actuator -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        
+        <!-- AOP -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency> -->
+		
+		<!-- Web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Auth -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.2.1.RELEASE</version><!--$NO-MVN-MAN-VER$ --> 
+		</dependency>
+		<!-- Si compatible con Devtools and at the same time with Jdbc or Jpa -->
+		<dependency>
+    		<groupId>com.okta.spring</groupId>
+    		<artifactId>okta-spring-security-starter</artifactId>
+    		<version>0.1.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.okta.spring</groupId>
+    		<artifactId>okta-spring-config</artifactId>
+    		<version>0.3.0</version>
+		</dependency>
+		<!-- No compatible con Devtools and at the same time with Jdbc or Jpa -->
+		<!-- <dependency>
+            <groupId>com.okta.spring</groupId>
+         	<artifactId>okta-spring-security-oauth2</artifactId>
+        	<version>0.3.0</version>
+        </dependency> -->
+		<!-- <dependency>
+			<groupId>com.okta.spring</groupId>
+			<artifactId>okta-spring-boot-starter</artifactId>
+			<version>0.3.0</version>
+		</dependency> -->
+
+		<!-- Okta SDK -->
+		<dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-api</artifactId>
+		    <version>0.10.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-impl</artifactId>
+		    <version>0.10.0</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-httpclient</artifactId>
+		    <version>0.10.0</version>
+		    <scope>runtime</scope>
+		</dependency>
+
+		<!-- Data -->
+		<!-- <dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency> -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <scope>runtime</scope>
+		</dependency> -->
+		 <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <optional>true</optional>
+    </dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.6</version>
+			<scope>test</scope>
+		</dependency> -->
+	</dependencies>
+	
+
+	<!-- <repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories> -->
+
+	
+	<issueManagement>
+    	<system>JIRA</system>
+    	<url>http://opensource.atlassian.com/projects/spring/browse/SECOAUTH</url>
+  	</issueManagement>
+  		
+  	<licenses>
+    	<license>
+      		<name>Apache 2.0</name>
+      		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    	</license>
+  	</licenses>
+
+	<developers>
+    	<developer>
+      		<id>sierrica</id>
+      		<name>Javier Sierra</name>
+      		<email>sierrica@hotmaill.com</email>
+    	</developer>
+  	</developers>
+		
+		
+
+
+
+</project>

@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Javier Sierra Martinez -- Developer -- https://www.linkedin.com/in/javier-sierra-martinez-a8720282
+
+# THANKS
+
+    Elena Lorente Bermejo
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript, jQuery, PureCSS, Modernizr, Normalize

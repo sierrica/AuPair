@@ -1,0 +1,12 @@
+{
+  "legend": "Login Form",
+  "email": "email",
+  "password": "password",
+  "remember": "Remember me",
+  "signin": "signin",
+  "failed": "signin failed",
+  "error": "Bad login information",
+  "success": "Login successful",
+  "register": "Register now",
+  "forgot": "Forgot password ?"
+}
