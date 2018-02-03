@@ -80,15 +80,17 @@ oc login https://api.starter-ca-central-1.openshift.com
 ```oc delete all --all
 ```
 
->### Delete all of an application. Delete all not eliminate the proyect. Could do error. Dont worry that means that already exist
+>### Create a new Proyect. Delete all not eliminate the proyect. Could do error. Dont worry that means that already exist
 ```
 oc new-project au-pair --description="AuPair APP" --display-name="AuPair"
 ```
+
+>### Create DATASE
 ```
 oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair centos/postgresql-95-centos7
 ```
 
->### Change de IP of database
+>### Create APP. Change de IP of database
 ```
 oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.16.188 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
@@ -175,6 +177,7 @@ java -jar lombok.jar install ..\..\eclipse\jee-oxygen\eclipse
 
 >### Maven
 Si se pasa de Gradle a Maven con Configure -> Convert to Maven Project, es necesario eliminar de .classpath esto para eliminar los errores de duplicidad de dependencias en la pestaña marker
+
 ```
 <classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer">
 	<attributes>
@@ -183,8 +186,8 @@ Si se pasa de Gradle a Maven con Configure -> Convert to Maven Project, es neces
 </classpathentry>
 ```
 
->### Matar proceso tomcat. Error: Address already in use.
->Open cmd
+>### Matar proceso tomcat. Error: Address already in use
+Open cmd
 ```
 netstat -aon | find "8080"
 taskkill /pid 5388 /f
