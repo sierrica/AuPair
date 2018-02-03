@@ -176,15 +176,15 @@ java -jar lombok.jar install ..\..\eclipse\jee-oxygen\eclipse
 >### Maven
 Si se pasa de Gradle a Maven con Configure -> Convert to Maven Project, es necesario eliminar de .classpath esto para eliminar los errores de duplicidad de dependencias en la pestaña marker
 ```
-	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer">
+	<attributes>
+		<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+	</attributes>
+</classpathentry>
 ```
 
 >### Matar proceso tomcat. Error: Address already in use.
-Open cmd
+>Open cmd
 ```
 netstat -aon | find "8080"
 taskkill /pid 5388 /f
