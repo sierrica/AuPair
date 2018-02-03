@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.scheduling.annotation.EnableScheduling;
+//import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 

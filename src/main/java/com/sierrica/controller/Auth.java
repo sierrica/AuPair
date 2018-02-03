@@ -1,7 +1,6 @@
 package com.sierrica.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +14,6 @@ import com.okta.sdk.client.Clients;
 import com.okta.sdk.resource.user.UserBuilder;
 import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
-import com.sierrica.dao.UserRepository;
-
-import javax.validation.Valid;
-
-import org.json.JSONObject;
 import org.springframework.http.MediaType;
 
 @RestController
