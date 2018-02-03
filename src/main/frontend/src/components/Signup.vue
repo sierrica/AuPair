@@ -84,16 +84,14 @@ export default {
 	  				$.ajax({
 	  					method: 'post',
 	  					url: window.spring + '/signup',
-	  					contentType: 'application/json; charset=utf-8',
-	  					data: JSON.stringify({
-  							email: "prueba@example.com",
-  							firstName: "Nombre",
-  							lastName: "Apellido",
-  							password: "Taustemix8888",
-  							securityQuestion: "Nombre Padre",
-  							securityQuestionAnswer: "Jesus"
-	  						
-	  					}),
+	  					contentType: 'application/json',
+	  					//dataType: 'json',
+	  					data: JSON.stringify({"email": "prueba@example.com"}),
+	  					/*   							firstName: "Nombre",
+							lastName: "Apellido",
+							password: "Taustemix8888",
+							securityQuestion: "Nombre Padre",
+							securityQuestionAnswer: "Jesus" */
 	  					success: function(data) {
 	  						console.log ("RESPUESTA ME: ");
 	  			  		    console.log (data);

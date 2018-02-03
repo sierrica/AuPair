@@ -6,6 +6,16 @@
 sierrica-dev-621930
 
 
+# Error oaut2 devtools actuator
+@EnableAuthorizationServer  // Solo se utiliza por querer asegurar actuator management.security.enabled=true,  okta-spring-security-starter 0.1.0 y devtools
+Por ahora seguir utilizando okta-spring-security-starter 0.1.0 por el error con Devtools y dejar management.security.enabled=false para poder ver la informacion
+
+# Error lombook no reconocido en Eclipse.
+java -jar lombok.jar install ..\..\eclipse\jee-oxygen\eclipse 
+java -jar lombok-1.16.20.jar install <path of where your IDE is installed>
+Hacer un Maven Update y esperar un poco. Si eso no funciona añadir el Jar al proyecto y luego quitarlo porque he comprobado que no es necesario, solo el instalarlo en el dir de Eclipse
+
+
 # AuPair Web App
 App for AuPairs
 
@@ -138,7 +148,7 @@ tercero desde el dir target o donde esta el WAR
 - oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair centos/postgresql-95-centos7
 
 ## Change de IP of database
-- oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.27.62 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+- oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.28.98 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 - oc expose service aupair --name=aupair
 
 ## No funciona ya exponer con dominio custom con la version gratuita

@@ -1,7 +1,8 @@
 package com.sierrica.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
+
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,10 @@ import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
 import com.sierrica.dao.UserRepository;
 
+import javax.validation.Valid;
+
+import org.json.JSONObject;
+import org.springframework.http.MediaType;
 
 @RestController
 public class Auth {
@@ -25,6 +30,10 @@ private final  String clientId;
 private final  String redirectUri;
 private final  String token;
 private final  String orgUrl;
+
+//@Autowired
+//UserRepository userRepository;
+
 
 	//public Auth(@Value("#{@environment['okta.oauth2.clientId']}") String clientId, @Value("#{@environment['okta.oauth2.issuer']}") String issuer, @Value("#{@environment['okta.oauth2.redirectUri']}") String redirectUri, @Value("#{@environment['okta.client.token']}") String token, @Value("#{@environment['okta.client.orgUrl']}") String orgUrl) {
     public Auth(OktaOAuth2Properties oktaOAuth2Properties, OktaClientProperties oktaClientProperties) {
@@ -75,11 +84,13 @@ private final  String orgUrl;
     
     
     
-    @PostMapping(value="/signup", consumes={MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(value="/signup", consumes = { MediaType.APPLICATION_JSON_VALUE })
     //public String signup(@RequestBody String user) {
-    public String signup(@RequestBody com.sierrica.model.User user) {
+    	public String signup(@RequestBody com.sierrica.model.User user) {
     	
     	System.out.println("DENTRO OAUTH BACKEND");
+    	
+    	//userRepository.save(user);
     	//UserRepository repository = repository.save(user);
 
     	
@@ -109,7 +120,7 @@ private final  String orgUrl;
         		if (e.getOktaError().getCode().equals("E0000001") &&
         			e.getOktaError().getMessage().contains("Api validation failed: login") &&   
         			e.getOktaError().getCauses().toString().contains("An object with this field already exists in the current organization")) {
-        				return "Un usario ya existe con ese email";
+        				return "Un usario ya existe con el email: " + user.getEmail();
         		}
         		else {
         			System.err.println(e);
