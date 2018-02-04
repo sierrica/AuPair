@@ -46,6 +46,7 @@
 				<directory>src/main/resources</directory>
 				<excludes>
 					<!-- <exclude>public/www/index_cordova.html</exclude> -->
+					<exclude>../com/descarted/**/*</exclude>
 					<exclude>private/**/*</exclude>
 				</excludes>
 			</resource>
@@ -53,6 +54,31 @@
 
 		<!-- Plugins -->
 		<plugins>
+
+			<!-- Maven Compiler -->
+			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-compiler-plugin</artifactId>
+  				<configuration>
+    				<excludes>
+      					<exclude>com/descarted/*.java</exclude>
+    				</excludes>
+  				</configuration>
+			</plugin>
+			
+			<!-- Maven Manifest -->
+			<!-- <plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-jar-plugin</artifactId>
+        		<configuration>
+          			<archive>
+            			<manifestEntries>
+              				<mode>development</mode>
+            			</manifestEntries>
+          			</archive>
+        		</configuration>
+      		</plugin> -->
+
 
 			<!-- Spring Boot Maven plugin -->
 			<plugin>
@@ -115,6 +141,15 @@
 
 	<dependencies>
 		
+
+		<!-- <exclusions>
+  			<exclusion> 
+    			<groupId>org.slf4j</groupId>
+    			<artifactId>slf4j-log4j12</artifactId>
+  			</exclusion>
+		</exclusions> -->
+		
+		
 		<!-- Hot Reload -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -176,37 +211,23 @@
     		<artifactId>okta-spring-config</artifactId>
     		<version>0.3.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.okta.spring</groupId>
+		    <artifactId>okta-spring-sdk</artifactId>
+		    <version>0.3.0</version>
+		</dependency>
 
-
-		<!-- Okta SDK -->
-		<dependency>
-		    <groupId>com.okta.sdk</groupId>
-		    <artifactId>okta-sdk-api</artifactId>
-		    <version>0.10.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.okta.sdk</groupId>
-		    <artifactId>okta-sdk-impl</artifactId>
-		    <version>0.10.0</version>
-		    <scope>runtime</scope>
-		</dependency>
-		<dependency>
-		    <groupId>com.okta.sdk</groupId>
-		    <artifactId>okta-sdk-httpclient</artifactId>
-		    <version>0.10.0</version>
-		    <scope>runtime</scope>
-		</dependency>
 
 		<!-- Data -->
 		<dependency>
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<!-- <dependency>
+		</dependency> -->
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
 		    <exclusions>
@@ -215,7 +236,7 @@
                     <artifactId>tomcat-jdbc</artifactId>
                 </exclusion>
             </exclusions>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
@@ -228,8 +249,6 @@
 		<dependency>
         	<groupId>org.projectlombok</groupId>
         	<artifactId>lombok</artifactId>
-        	<!-- <scope>provided</scope> -->
-        	<!-- <version>1.16.20</version> -->
         	<optional>true</optional>
     	</dependency>
 

@@ -1,34 +1,115 @@
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+
+version =  '1.0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+sourceSets {
+    main {
+    	java {
+    		exclude 'com/descarted'
+    	}
+        resources {
+            exclude 'private'
+        }
+    }
+}
+war {
+    archiveName = 'ROOT.war'
+	/*manifest {
+	    attributes "Main-Class": "your.package.classWithMain"
+	    attributes "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
+	}*/
+}
+test {
+	ignoreFailures = true
+}
+
+
 buildscript {
+	ext {
+		springVersion = '1.5.10.RELEASE'
+	}
     repositories {
         mavenCentral()
     }
+    configurations {
+    	compile.exclude group:'ch.qos.logback'
+    }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springVersion}"
     }
 }
 
-apply plugin: 'war'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
 
-war {
-    baseName = 'aupair'
-    version =  '0.0.1'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom {
+                project {
+                    parent {
+                        groupId "org.springframework.boot"
+                        artifactId "spring-boot-starter-parent"
+                        version "${springVersion}"
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+bootRun {
+	systemProperties['PLATFORM'] = System.properties['PLATFORM']
+	systemProperties['NODE_ENV'] = System.properties['NODE_ENV']
+	systemProperties['POSTGRESQL_URL'] = System.properties['POSTGRESQL_URL']
+	systemProperties['POSTGRESQL_DATABASE'] = System.properties['POSTGRESQL_DATABASE']
+	systemProperties['POSTGRESQL_USER'] = System.properties['POSTGRESQL_USER']
+	systemProperties['POSTGRESQL_PASSWORD'] = System.properties['POSTGRESQL_PASSWORD']
+    addResources = true
+}
+springBoot {
+    backupSource = false
+}
+bootRepackage {
+    mainClass = 'com.sierrica.AuPairApplication'
+    excludeDevtools = true
+}
+
+
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    runtime 'org.springframework.boot:spring-boot-devtools'
+	compile 'org.springframework.boot:spring-boot-starter-actuator'
+	
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.2.1.RELEASE'
+    compile 'com.okta.spring:okta-spring-security-starter:0.1.0'
+    //compile 'com.okta.spring:okta-spring-security-oauth2:0.3.0'
+    compile 'com.okta.spring:okta-spring-config:0.3.0'
+    compile 'com.okta.spring:okta-spring-sdk:0.3.0'
+
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    runtime 'org.postgresql:postgresql'
+    compile 'org.projectlombok:lombok'
+    
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.security:spring-security-test'
 }
 
 repositories {
     mavenCentral()
-}
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtime("org.postgresql:postgresql") 
 }

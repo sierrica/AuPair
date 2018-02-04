@@ -92,7 +92,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.30.115 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.27.51 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
@@ -185,6 +185,8 @@ Si se pasa de Gradle a Maven con Configure -> Convert to Maven Project, es neces
 	</attributes>
 </classpathentry>
 ```
+Si aparece errror Class path contains multiple SLF4J bindings, borrar el directorio ```.gradle/caches``` con las librerias
+Si aparece un error de que no encuentra la clase principal al arrancar en modo Spring Boot, ejecutar primero como Maven y luego ya deja
 
 >### Matar proceso tomcat. Error: Address already in use
 Open cmd

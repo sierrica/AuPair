@@ -1,5 +1,4 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
+
 
 ### STS ###
 .apt_generated
@@ -17,8 +16,13 @@ target/
 
 ### NetBeans ###
 nbproject/private/
+
+
+### Custom ###
+!.mvn/wrapper/maven-wrapper.jar
 build/
 bin/
+target/
 node/
 node_modules/
 src/main/resources/private/
