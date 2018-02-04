@@ -98,7 +98,7 @@ private MockMvc mockMvc;
     	//json.put("user",json);
     	
     	
-    	String prueba = "{ \"email\": \"prueba@example.com" +  "\"}";
+    	String prueba = "{ \"email\": \" " +  "\"}";
     	
         
     	this.mockMvc.perform(post("/signup").contentType(MediaType.APPLICATION_JSON_VALUE).content(prueba))

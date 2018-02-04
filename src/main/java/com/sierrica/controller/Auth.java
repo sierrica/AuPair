@@ -4,6 +4,7 @@ package com.sierrica.controller;
 
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ import com.okta.sdk.client.Clients;
 import com.okta.sdk.resource.user.UserBuilder;
 import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
+
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
 
 @RestController
@@ -80,7 +84,9 @@ private final  String orgUrl;
     
     @PostMapping(value="/signup", consumes = { MediaType.APPLICATION_JSON_VALUE })
     //public String signup(@RequestBody String user) {
-    	public String signup(@RequestBody com.sierrica.model.User user) {
+    public String signup(@Valid @RequestBody com.sierrica.model.User user) {
+    	//public String signup(@Valid @ModelAttribute com.sierrica.model.User user) {
+    	
     	
     	System.out.println("DENTRO OAUTH BACKEND");
     	
