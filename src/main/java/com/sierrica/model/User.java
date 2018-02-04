@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
  *
  */
 
-@Entity
+//@Entity
 //@Table(name = "\"user\"")		// Necesary the quotes because Postgre reserve this word
 //@Table(name = "Prueba")
 @Getter @Setter
