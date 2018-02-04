@@ -77,7 +77,8 @@ oc login https://api.starter-ca-central-1.openshift.com
 ```
 
 >### Delete all of an application.
-```oc delete all --all
+```
+oc delete all --all
 ```
 
 >### Create a new Proyect. Delete all not eliminate the proyect. Could do error. Dont worry that means that already exist
@@ -92,7 +93,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.27.51 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=172.31.28.150 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
