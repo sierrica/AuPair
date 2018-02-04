@@ -26,15 +26,15 @@ import lombok.AllArgsConstructor;
  *
  */
 
-//@Entity
-//@Table(name = "\"user\"")		// Necesary the quotes because Postgre reserve this word
+@Entity
+@Table(name = "\"user\"")		// Necesary the quotes because Postgre reserve this word
 //@Table(name = "Prueba")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class User {
 	
-	//@Id
-	//@Column(name = "email")
+	@Id
+	@Column(name = "email")
 	@NotBlank(message="email is requireddddddd")
 	//@NotNull(message="email is requireddddddd")
 	//@NonNull 
