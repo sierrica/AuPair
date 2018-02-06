@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS "user", prueba, rol;;
 
 
+--CREATE or replace EXTENSION plperl;;
+CREATE or replace LANGUAGE plperlu;;
+
 
 CREATE OR REPLACE FUNCTION validate_email(email VARCHAR) RETURNS bool
 AS $$
