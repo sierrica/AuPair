@@ -93,7 +93,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.131.49.145 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.129.17.185 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
@@ -170,6 +170,12 @@ Instalar el java desde un CMD(admin )Hacer un Maven Update y esperar un poco. Si
 java -jar lombok.jar install <path of where your IDE is installed>
 java -jar lombok.jar install ..\..\eclipse\jee-oxygen\eclipse
 ```
+
+### Error que no encuentra la libreria plperl.dll en windows cuando se pretende ejecutar procedures Perl en PostgreSQL.
+1. Instalar postgreSQL 10 con las devops opcion.
+2. Acceder a la url del webadmin devops: http://localhost:8051/#/components/view   (Seccion PostgreSQL -> Package Manager)
+3. Instalar el paquete Perl5
+4.- Reinicial el servicio PostgreSQL o reiniciar windows.
 
 >### Error en el config.xml de Cordova sutituir el nombre de una etiqueta por mayusculas:
 ```

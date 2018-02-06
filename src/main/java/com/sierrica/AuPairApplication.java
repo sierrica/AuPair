@@ -14,7 +14,9 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 @SpringBootApplication
 //@EnableScheduling
 @ComponentScan("com.sierrica")
+//@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+//@EnableJpaRepositories(basePackages={"com.sierrica.dao"})
 public class AuPairApplication {
 	
 	

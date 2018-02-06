@@ -223,19 +223,9 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<!-- <dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency> -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
-		    <exclusions>
-                <exclusion>
-                    <groupId>org.apache.tomcat</groupId>
-                    <artifactId>tomcat-jdbc</artifactId>
-                </exclusion>
-            </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -304,8 +294,15 @@
     	<license>
       		<name>Apache 2.0</name>
       		<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	    <distribution>repo</distribution>
     	</license>
   	</licenses>
+
+	<organization>
+	    <name>sierrica</name>
+	    <url>https://sierrica.com</url>
+
+	</organization>
 
 	<developers>
     	<developer>

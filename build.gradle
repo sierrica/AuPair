@@ -8,6 +8,9 @@ apply plugin: 'org.springframework.boot'
 version =  '1.0.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+description = 'Web App for AuPairs'
+
 sourceSets {
     main {
     	java {
@@ -18,12 +21,24 @@ sourceSets {
         }
     }
 }
+
+
 war {
     archiveName = 'ROOT.war'
-	/*manifest {
-	    attributes "Main-Class": "your.package.classWithMain"
-	    attributes "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
-	}*/
+	manifest {
+	    attributes "Implementation-Title": "${rootProject.name}"
+	    attributes "Implementation-Version": "${version}"
+	    attributes "Archiver-Version": ""
+	    attributes "Built-By": "sierrica"
+	    attributes "Implementation-Vendor-Id": "com.sierrica"
+	    attributes "Implementation-Vendor": "sierrica"
+	    attributes "Implementation-Vendor": "sierrica"
+	    attributes "Created-By": "Gradle 3.5"
+	    attributes "Build-Jdk": "1.8.0_151"
+	    attributes "Implementation-URL": "http://aupair.sierrica.com"
+	    
+	   // attributes "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
+	}
 }
 test {
 	ignoreFailures = true
@@ -36,12 +51,17 @@ buildscript {
 	}
     repositories {
         mavenCentral()
+        //maven { url 'http://repo.spring.io/plugins-release' }
+        //maven { url "https://plugins.gradle.org/m2/" }
     }
     configurations {
     	compile.exclude group:'ch.qos.logback'
     }
     dependencies {
+
+
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springVersion}"
+
     }
 }
 
@@ -82,16 +102,14 @@ bootRepackage {
 
 
 
-configurations {
-    providedRuntime
-}
+
 
 dependencies {
     runtime 'org.springframework.boot:spring-boot-devtools'
 	compile 'org.springframework.boot:spring-boot-starter-actuator'
 	
     compile 'org.springframework.boot:spring-boot-starter-web'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    providedCompile 'org.springframework.boot:spring-boot-starter-tomcat'
     
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.security.oauth:spring-security-oauth2:2.2.1.RELEASE'
@@ -112,4 +130,6 @@ dependencies {
 
 repositories {
     mavenCentral()
+   // maven { url 'http://repo.spring.io/plugins-release' }
+   // maven { url "https://plugins.gradle.org/m2/" }
 }

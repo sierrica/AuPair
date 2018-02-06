@@ -9,7 +9,6 @@ import java.security.Principal;
 public class PruebaController {
 
     @RequestMapping("/mod")
-    
     @PreAuthorize("hasAuthority('Everyone') || #oauth2.hasScope('email')")
     public String usuario(Principal principal) {
     	return "Usuario: " + principal.getName();
