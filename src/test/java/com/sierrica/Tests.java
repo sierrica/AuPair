@@ -29,6 +29,7 @@ import org.json.JSONObject;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+//@Transactional
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Tests {
 
@@ -87,23 +88,38 @@ private MockMvc mockMvc;
     	System.out.println("DENTRO signup");
     	
     	JSONObject json = new JSONObject();
-    	json.put("email","prueba@hotmail.com");
-//    	json.put("firstName","Nombre");
-//    	json.put("lastName","Apellido");
-//    	json.put("password", "Taustemix8888");
-//    	json.put("securityQuestion", "Nombre Padre");
-//    	json.put("securityQuestionAnswer", "Jesus");
-    	//JSONObject json2 = new JSONObject();
-    	//json.put("user",json);
-    	
-    	
-    	String prueba = "{ \"email\": \"prueba@example.com" +  "\"}";
-    	
+    	json.put("email","prueba@example.com");
+    	json.put("firstName","Nombre");
+    	json.put("lastName","Apellido");
+    	json.put("password", "Taustemix8888");
+    	json.put("securityQuestion", "Nombre Padre");
+    	json.put("securityQuestionAnswer", "Jesus");    	
         
-    	this.mockMvc.perform(post("/signup").contentType(MediaType.APPLICATION_JSON_VALUE).content(prueba))
+    	
+    	System.out.println("DATOS ENVIADOS:");
+    	System.out.println(json.toString());
+    	
+    	this.mockMvc.perform(post("/signup").contentType(MediaType.APPLICATION_JSON_VALUE).content(json.toString()))
     				//.andDo(print())
     				.andExpect(status().isOk());
                 	//.andExpect(content().string(containsString("Hello World")));
     }
+    
+    
+    
+    
+    
+    
+//    @Autowired
+//	JpaTagRepository repository;
+//
+//	@Test
+//	public void findsAllTags() {
+//		List<Tag> tags = this.repository.findAll();
+//		assertThat(tags).hasSize(3);
+//		for (Tag tag : tags) {
+//			assertThat(tag.getNotes().size()).isGreaterThan(0);
+//		}
+//	}
 
 }

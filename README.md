@@ -4,15 +4,16 @@ App for AuPairs
 # Okta company
 ```
 sierrica-dev-621930
+https://dev-621930.oktapreview.com/login/login.htm
 ```
 
 ## Built With
 * Java Spring Boot
-* PostgreSQL
-* Hibernate - JPA
+* PostgreSQL, JDBC, Hibernate/JPA
+* lombok, jackson
+* Logback, Papertrail
 * Git, Github
 * HTML5
-* SAAS
 * MaterializeCSS, SASS
 * Vue
 * Okta, JsonWebToken
@@ -76,6 +77,21 @@ heroku war:deploy target/ROOT.war --app aupairsierrica
 oc login https://api.starter-ca-central-1.openshift.com
 ```
 
+
+oc get pods
+oc rsh <pod>
+PGPASSWORD=taustemix psql -h localhost aupair postgres
+select * from pg_language;
+CREATE EXTENSION plperl;
+CREATE LANGUAGE plperlu;
+\q
+--with-perl
+
+yum install -y postgresql-plperl
+
+createlang plperl -d testdb
+
+
 >### Delete all of an application.
 ```
 oc delete all --all
@@ -88,12 +104,13 @@ oc new-project au-pair --description="AuPair APP" --display-name="AuPair"
 
 >### Create DATASE
 ```
-oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair centos/postgresql-95-centos7
+oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_ADMIN_PASSWORD=taustemix -e POSTGRESQL_DATABASE=aupair centos/postgresql-96-centos7 INSTALL_PKGS=postgresql-plperl
 ```
+
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.130.54.39 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.130.54.51 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route

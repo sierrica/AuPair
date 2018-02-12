@@ -151,6 +151,9 @@ export default {
 	  			}
 	  			// No Cordova
 	  			else {
+	  				console.log (authClient)
+	  				console.log (response)
+	  				
 			    	authClient.token.getWithoutPrompt({
 			            responseType: ['id_token', 'token'],
 			            scopes: ['openid', 'email', 'profile'],
@@ -161,16 +164,18 @@ export default {
 			    		cb(true)
 			    	}).fail(err => {
 			    		alert ("EN EL ELSE DEL TOKEN DE OKTA")
+			    		console.log (err)
 			    		cb(JSON.stringify(err))
 			    	});
 	  			}
 	  		}
 	  		else {
-	  			//alert ("EN EL ELSE DEL LOGUIN DE OKTA")
+	  			alert ("EN EL ELSE DEL LOGUIN DE OKTA")
 	  		    cb(response)
 	  		}
 	  	}).fail(err => {
-	  		//console.log ("EN EL FAIL DEL LOGUIN DE OKTA")
+	  		console.log ("EN EL FAIL DEL LOGUIN DE OKTA")
+	  		console.log (err)
 	  		(err.message == 'Authentication failed')   ?   cb ('401')   :   cb (err);
 	  	});
     },

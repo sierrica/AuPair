@@ -19,14 +19,38 @@
 		<version>1.5.10.RELEASE</version>
 		<relativePath /><!-- lookup parent from repository -->
 	</parent>
+	
+	<!-- <dependencyManagement>
+    	<dependencies>
+	        <dependency>
+	            <groupId>org.springframework.data</groupId>
+	            <artifactId>spring-data-releasetrain</artifactId>
+	            <version>Lovelace-BUILD-SNAPSHOT</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+    	</dependencies>
+	</dependencyManagement>
+	<repositories>
+	    <repository>
+	        <id>spring-snapshots</id>
+	        <name>Spring Snapshots</name>
+	        <url>https://repo.spring.io/libs-snapshot</url>
+	        <snapshots>
+	            <enabled>true</enabled>
+	        </snapshots>
+	    </repository>
+	</repositories> -->
+	
+	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<!-- maven-compiler-plugin -->
-		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 
@@ -66,6 +90,16 @@
   				</configuration>
 			</plugin>
 			
+			<!-- Maven War -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.0</version><!--$NO-MVN-MAN-VER$ --> 
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
 			<!-- Maven Manifest -->
 			<!-- <plugin>
         		<groupId>org.apache.maven.plugins</groupId>
@@ -91,6 +125,10 @@
 					<addResources>true</addResources>
 				</configuration>
 			</plugin>
+
+
+			
+			
 
 			<!-- Spring Boot Node-Npm plugin -->
 			<!-- <plugin>
@@ -141,15 +179,6 @@
 
 	<dependencies>
 		
-
-		<!-- <exclusions>
-  			<exclusion> 
-    			<groupId>org.slf4j</groupId>
-    			<artifactId>slf4j-log4j12</artifactId>
-  			</exclusion>
-		</exclusions> -->
-		
-		
 		<!-- Hot Reload -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -162,8 +191,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
-        
 
         
         
@@ -195,17 +222,17 @@
 			<version>2.2.1.RELEASE</version><!--$NO-MVN-MAN-VER$ --> 
 		</dependency>
 		<!-- Si compatible con Devtools -->
-		<dependency>
+		<!-- <dependency>
     		<groupId>com.okta.spring</groupId>
     		<artifactId>okta-spring-security-starter</artifactId>
     		<version>0.1.0</version>
-		</dependency>
+		</dependency> -->
 		<!-- No compatible con Devtools -->
-		<!-- <dependency>
+		<dependency>
             <groupId>com.okta.spring</groupId>
          	<artifactId>okta-spring-security-oauth2</artifactId>
         	<version>0.3.0</version>
-        </dependency> -->
+        </dependency>
 		<dependency>
     		<groupId>com.okta.spring</groupId>
     		<artifactId>okta-spring-config</artifactId>
@@ -216,6 +243,23 @@
 		    <artifactId>okta-spring-sdk</artifactId>
 		    <version>0.3.0</version>
 		</dependency>
+		<!-- <dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-api</artifactId>
+		    <version>0.10.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-impl</artifactId>
+		    <version>0.10.0</version>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.okta.sdk</groupId>
+		    <artifactId>okta-sdk-httpclient</artifactId>
+		    <version>0.10.0</version>
+		    <scope>runtime</scope>
+		</dependency> -->
 
 
 		<!-- Data -->
@@ -243,6 +287,26 @@
     	</dependency>
 
 
+		<!-- Logback -->
+		<!-- Necessary for Papertrail -->
+		<dependency>
+		    <groupId>com.papertrailapp</groupId>
+		    <artifactId>logback-syslog4j</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
+		<!-- Necessary for log JSON in file -->
+		<dependency>
+    		<groupId>net.logstash.logback</groupId>
+    		<artifactId>logstash-logback-encoder</artifactId>
+    		<version>4.11</version>
+		</dependency>
+		<!-- Conditions if-else en logback -->
+		<dependency>
+    		<groupId>org.codehaus.janino</groupId>
+    		<artifactId>janino</artifactId>
+		</dependency>
+
+
 
 		<!-- Test -->
 		<dependency>
@@ -255,6 +319,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>test</scope>
+		</dependency> -->
 		<!-- <dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
@@ -311,9 +380,5 @@
       		<email>sierrica@hotmaill.com</email>
     	</developer>
   	</developers>
-		
-		
-
-
 
 </project>

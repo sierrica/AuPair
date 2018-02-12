@@ -1,18 +1,24 @@
 package com.sierrica.dao;
 
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 //import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.stereotype.Repository;
 
-
 //@Repository
-//public interface UserRepository extends CrudRepository<user, Long> {
-public class UserRepository {
-	//public interface UserRepository extends JpaRepository<User, Long> {
+//interface ArticleRepository : JpaRepository<Article, Long>
+
+
+@Repository
+public interface UserRepository extends CrudRepository<com.sierrica.model.User, Long> {
 	
-	//List<User> findByEmail(String email);
+	List<com.sierrica.model.User> findByEmail(String email);
+	
+	
 	
 	
 //	@Transactional

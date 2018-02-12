@@ -35,46 +35,18 @@ var app = {
 			document.addEventListener('deviceready', this.onDeviceReady, false)
 		 
 		var that = this;
-		
-
-		
-		
 		$.ajax(window.spring + '/credentials', {
   		    success: function(data) {
   		      	console.log ("RESPUESTA GETWID: ");
   		      	console.log (data);
-  		      	auth.setAuthClient(data);
+  		      	//data.clientId = data.client_id;
+  		        //data.redirectUri = data.redirect_uri;
   		      	
-
-  		      	
-  				/*$.ajax({
-  					url: window.springURL + '/mod',
-  					headers: {
-  						'Authorization': "Bearer " + auth.getAuthClient().tokenManager.get('my_access_token').accessToken
-
-  					},    
-  					success: function(data) {
-  						console.log ("RESPUESTA ME: ");
-  			  		    console.log (data);
-  			  		    	
-  			  		},
-		  	    	error: function(err) {
-		  	      		console.log("ERROR")
-		  	      		console.log(err)
-		  	    	}
-  			   });*/
-  		      	
-  		      	
-  		      	
-  		      	
-  		      	
-  		      	
-  		      	that.setupVue()
+  		      	auth.setAuthClient(JSON.parse(data));
+  		      	that.setupVue();
   		  	},
   	    	error: function(err) {
   	      		alert("LOGIN ERROR SPRING /credentials: " + err)
-  	      		if (cb) cb(false)
-  		      		that.onChange(false)
   	    	}
   		});
   },
@@ -92,11 +64,10 @@ var app = {
 			  		fallbackLocale: 'en',
 			  		messages,
 			}),
-		  
 		  beforeCreate: function() {
-
 		  },
 		  created: function() {
+			  //alert('VUE CARGADO: ' + process.env.NODE_ENV)
 			  $(document).ready(function() {
 				  setTimeout(function() {
 					  $('.preloader-wrapper').css('display', 'none')
@@ -105,7 +76,6 @@ var app = {
 			  });
 		  }
 	  })
-	  //alert('VUE CARGADO: ' + process.env.NODE_ENV)
   	}
 }
 

@@ -16,7 +16,8 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 //@EnableGlobalMethodSecurity(prePostEnabled=true)
 
 //@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(prePostEnabled=true)	//securedEnabled = true
+
 //@EnableOAuth2Client
 //@EnableOAuth2Sso
 //@EnableAuthorizationServer
