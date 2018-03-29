@@ -20,8 +20,8 @@
   "not ie <= 8"
  ],
  "config": {
-  "dev": "http://10.0.2.15:8081",
-  "windows": "http://10.0.2.15:8080",
+  "dev": "http://192.168.0.140:8081",
+  "windows": "http://192.168.0.140:8080",
   "openshift": "http://aupair-au-pair.193b.starter-ca-central-1.openshiftapps.com",
   "heroku": "https://aupairsierrica.herokuapp.com"
  },

@@ -81,7 +81,7 @@ heroku config:set PLATFORM="heroku" --app aupairsierrica
 heroku domains:add aupair.sierrica.com --app aupairsierrica
 ```
 
->### Desplegar war local con el CLI. Es necesario antes realizar un mvn clean verify para generar el WAR. Desde la carpeta target, ejecutar:
+>### Desplegar war local con el CLI. Es necesario antes realizar un mvn clean verify para generar el WAR. Ademas es necesario estar no detras de un proxy sino da error (java.net.SocketException), no vale poner como NAT en la VM, es necesario estar en la red fisica. Desde la carpeta target, ejecutar:
 ```
 heroku war:deploy target/ROOT.war --app aupairsierrica
 ```
@@ -118,7 +118,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.130.26.75 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.130.26.91 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
