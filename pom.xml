@@ -96,7 +96,7 @@
 				<version>3.2.0</version><!--$NO-MVN-MAN-VER$ -->
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+					<!-- <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
 					<warSourceExcludes>/**</warSourceExcludes>
 					<webResources>
             			<resource>
@@ -104,7 +104,7 @@
             				<filtering>true</filtering>
             				<targetPath>webapp</targetPath>
           				</resource>
-          			</webResources>
+          			</webResources> -->
 				</configuration>
 			</plugin>
 			
