@@ -69,7 +69,7 @@
       			<artifactId>maven-clean-plugin</artifactId>
       			<version>3.0.0</version><!--$NO-MVN-MAN-VER$ -->
       			<configuration>
-        			<failOnError>true</failOnError>
+        			<failOnError>false</failOnError>
       			</configuration>
     		</plugin>
 
