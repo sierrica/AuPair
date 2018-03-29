@@ -27,16 +27,16 @@
  },
  "scripts": {
   "lint": "eslint --ext .js,.vue src",
-  "development": "webpack-dev-server --colors --inline --progress --content-base ./target/classes/public/www --config ./src/main/webapp/build/webpack.development.conf.js",
-  "start": "cross-env URL=$npm_package_config_dev npm run development",
+  "development": "cross-env URL=$npm_package_config_dev webpack-dev-server --colors --inline --progress --content-base ./target/classes/public/www --config ./src/main/webapp/build/webpack.development.conf.js",
+  "start": "npm run development",
   "web": "node ./src/main/webapp/build/build.web.js",
   "web-windows": "npm run web $npm_package_config_windows",
-  "web-openshift": "cross-env npm run web $npm_package_config_openshift",
-  "web-heroku": "cross-env npm run web $npm_package_config_heroku",
+  "web-openshift": "npm run web $npm_package_config_openshift",
+  "web-heroku": "npm run web $npm_package_config_heroku",
   "cordova": "node ./src/main/webapp/build/build.cordova.js",
-  "cordova-windows": "cross-env npm run cordova $npm_package_config_windows",
-  "cordova-openshift": "cross-env npm run cordova $npm_package_config_openshift",
-  "cordova-heroku": "cross-env npm run cordova $npm_package_config_heroku"
+  "cordova-windows": "npm run cordova $npm_package_config_windows",
+  "cordova-openshift": "npm run cordova $npm_package_config_openshift",
+  "cordova-heroku": "npm run cordova $npm_package_config_heroku"
  },
  "dependencies": {
   "jquery": "3.3.1",
