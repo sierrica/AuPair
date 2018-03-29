@@ -98,13 +98,15 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 					<warSourceExcludes>/**</warSourceExcludes>
-					<webResources>
+					
+					<!-- No es compatible en Openshift -->
+					<!-- <webResources>
             			<resource>
             				<directory>/src/main/webapp</directory>
             				<filtering>true</filtering>
             				<targetPath>webapp</targetPath>
           				</resource>
-          			</webResources>
+          			</webResources> -->
 				</configuration>
 			</plugin>
 			
