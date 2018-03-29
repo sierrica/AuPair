@@ -31,6 +31,7 @@
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- Openshift no permite especificar la clase especifica -->
 		<!-- <start-class>com.sierrica.AuPairApplication</start-class> -->
 	</properties>
 
@@ -69,6 +70,7 @@
       			<artifactId>maven-clean-plugin</artifactId>
       			<version>3.0.0</version><!--$NO-MVN-MAN-VER$ -->
       			<configuration>
+        			<!-- true da error en Openshift -->
         			<failOnError>false</failOnError>
       			</configuration>
     		</plugin>
@@ -79,8 +81,10 @@
   				<groupId>org.apache.maven.plugins</groupId>
   				<artifactId>maven-compiler-plugin</artifactId>
   				<configuration>
+  					<source>${java.version}</source>
+                    <target>${java.version}</target>
     				<excludes>
-      					<exclude>com/descarted/*.java</exclude>
+      					<exclude>com/descarted/**/*.java</exclude>
     				</excludes>
   				</configuration>
 			</plugin>
