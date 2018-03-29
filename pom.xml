@@ -135,13 +135,13 @@
 					<excludeDevtools>true</excludeDevtools>
 					<addResources>true</addResources>
 				</configuration>
-				<!-- <executions>
+				<executions>
                     <execution>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
                     </execution>
-                </executions> -->
+                </executions>
 			</plugin>
 
 
