@@ -127,11 +127,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<classifier>exec</classifier>
 					<fork>true</fork>
 					<!-- Exclude devtools from production jar file -->
 					<excludeDevtools>true</excludeDevtools>
 					<addResources>true</addResources>
 				</configuration>
+				<executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 
 
