@@ -80,16 +80,9 @@ oc login https://api.starter-ca-central-1.openshift.com
 
 oc get pods
 oc rsh <pod>
-PGPASSWORD=taustemix psql -h localhost aupair postgres
-select * from pg_language;
-CREATE EXTENSION plperl;
-CREATE LANGUAGE plperlu;
-\q
---with-perl
 
-yum install -y postgresql-plperl
-
-createlang plperl -d testdb
+Dir donde se ubican los logs
+/home/jboss
 
 
 >### Delete all of an application.
@@ -110,7 +103,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.130.54.51 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.130.54.116 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
