@@ -70,6 +70,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     			
     			
 	   			"/manage/**",
+	   			//"/docs/**",
 	   			
 	   			"/prueba.txt",
 	   			"/favicon.ico",

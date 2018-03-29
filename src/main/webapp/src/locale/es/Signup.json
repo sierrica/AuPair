@@ -1,0 +1,52 @@
+{
+  	"legend": "Formulario registro",
+  	"email": "Email",
+  	"password": "Contrase&ntilde;a",
+  	"passwordConfirmation": "Repite contrase&ntilde;a",
+  	"firstName": "Nombre",
+  	"lastName": "Apellido",
+  	"securityQuestion": "Pregunta de seguridad",
+  	"securityQuestionAnswer": "Respuesta pregunta de seguridad",
+  	"locale": "Idioma",
+  	"english": "Ingl&eacute;s",
+  	"spanish": "Espa&ntilde;ol",
+  	"remember": "Recordarme",
+  	"signup": "registrar",
+  	"failed": "Registro fallido",
+  	"errorLegend": "Mala informaci&oacute;n de registro",
+  	"success": "Registro satisfactorio",
+  	"signin": "Acceder",
+  	"forgot": "&iquest;Ha olvidado la contrase&ntilde;a?",
+   	"error": {
+   		"userAlreadyRegistered": "Usuario ya registrado con ese email",
+   		"answerPartQuestion": "La respuesta no puede formar parte de la pregunta",
+  		"passwordNotValid": "Contrase&ntilde;a no v&aacute;lida, al menos 8 car&aacute;cteres, letra min&uacute;scula, letra may&uacute;scula, un n&uacute;mero y no partes de tu nombre de usuario"
+  	},
+  	"validate": {
+  		"email": {
+  			"required": "Campo email es requerido",
+  			"email": "Campo email no una direcci&oacute;n v&aacute;lida"
+  		},
+  		"password": {
+  			"required": "Campo password es requerido",
+  			"regex": "Contrase&ntilde;a no v&aacute;lida, al menos 8 car&aacute;cteres, letra min&uacute;scula, letra may&uacute;scula, un n&uacute;mero y no partes de tu nombre de usuario"
+  			
+  		},
+  		"passwordConfirmation": {
+  			"required": "Campo repite contrase&ntilde;a es requerido",
+  			"confirmed": "No coincide la contrase&ntilde;a"
+  		},
+  		"firstName": {
+  			"required": "Campo nombre es requerido"
+  		},
+  		"lastName": {
+  			"required": "Campo apellido es requerido"
+  		},
+  		"securityQuestion": {
+  			"required": "Campo securityQuestionAnswer es requerido"
+  		},
+  		"securityQuestionAnswer": {
+  			"required": "Campo securityQuestionAnswer es requerido"
+  		}
+  	}
+}

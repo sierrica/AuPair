@@ -89,11 +89,12 @@ private MockMvc mockMvc;
     	
     	JSONObject json = new JSONObject();
     	json.put("email","prueba@example.com");
+    	json.put("locale","es");
     	json.put("firstName","Nombre");
     	json.put("lastName","Apellido");
     	json.put("password", "Taustemix8888");
     	json.put("securityQuestion", "Nombre Padre");
-    	json.put("securityQuestionAnswer", "Jesus");    	
+    	json.put("securityQuestionAnswer", "Jesus");
         
     	
     	System.out.println("DATOS ENVIADOS:");
@@ -101,7 +102,7 @@ private MockMvc mockMvc;
     	
     	this.mockMvc.perform(post("/signup").contentType(MediaType.APPLICATION_JSON_VALUE).content(json.toString()))
     				//.andDo(print())
-    				.andExpect(status().isOk());
+    				.andExpect(status().isCreated());
                 	//.andExpect(content().string(containsString("Hello World")));
     }
     

@@ -129,7 +129,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<!-- <classifier>exec</classifier> -->
 					<fork>true</fork>
 					<!-- Exclude devtools from production jar file -->
 					<excludeDevtools>true</excludeDevtools>
@@ -205,10 +204,22 @@
 		</dependency>
 		
 		<!-- Actuator -->
-		<dependency>
+		<!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator-docs</artifactId>
+		</dependency> -->
+
+		<!-- Jasypt -->
+		<dependency>
+    		<groupId>com.github.ulisesbocchio</groupId>
+    		<artifactId>jasypt-spring-boot-starter</artifactId>
+    		<version>2.0.0</version>
+		</dependency>
+		
 
         
         
@@ -288,6 +299,12 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		    <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -296,13 +313,33 @@
 		<dependency>
 		    <groupId>org.postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
-		    <scope>runtime</scope>
+		    <!-- Importante comentar <scope> para no generar error al generar el WAR con los tipos personalizados Postgresql -->
+		    <!-- <scope>runtime</scope> -->
 		</dependency>
+		
+		
+		<!-- Lombok -->
 		<dependency>
         	<groupId>org.projectlombok</groupId>
         	<artifactId>lombok</artifactId>
         	<optional>true</optional>
     	</dependency>
+
+
+		<!-- SpringFox -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>2.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+
+
+
 
 
 		<!-- Logback -->
@@ -337,6 +374,26 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <!-- <version>1.3</version> -->
+            <scope>test</scope>
+        </dependency>
+		
+		
 		<!-- <dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -363,18 +420,11 @@
 
 
 
-	<!-- <repositories>
-		<repository>
-   			<id>spring-snapshot</id>
-    		<name>Spring Snapshot Repository</name>
-    		<url>http://repo.spring.io/snapshot</url>
-  		</repository>
-  	</repositories> -->
-	
+
 	
 	<issueManagement>
-    	<system>JIRA</system>
-    	<url>http://opensource.atlassian.com/projects/spring/browse/SECOAUTH</url>
+    	<system>GitHub</system>
+    	<url>https://github.com/sierrica/AuPair/issues</url>
   	</issueManagement>
   		
   	<licenses>
@@ -388,7 +438,6 @@
 	<organization>
 	    <name>sierrica</name>
 	    <url>https://sierrica.com</url>
-
 	</organization>
 
 	<developers>
@@ -398,5 +447,46 @@
       		<email>sierrica@hotmaill.com</email>
     	</developer>
   	</developers>
+  	
+  	
+  	
+  	
+  	
+  	
+  		<!-- <dependencyManagement>
+    	<dependencies>
+	        <dependency>
+	            <groupId>org.springframework.data</groupId>
+	            <artifactId>spring-data-releasetrain</artifactId>
+	            <version>Lovelace-BUILD-SNAPSHOT</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+    	</dependencies>
+	</dependencyManagement>
+	<repositories>
+	    <repository>
+	        <id>spring-snapshots</id>
+	        <name>Spring Snapshots</name>
+	        <url>https://repo.spring.io/libs-snapshot</url>
+	        <snapshots>
+	            <enabled>true</enabled>
+	        </snapshots>
+	    </repository>
+	</repositories> -->
+  	
+  	
+  	
+  	
+  		<!-- <repositories>
+		<repository>
+   			<id>spring-snapshot</id>
+    		<name>Spring Snapshot Repository</name>
+    		<url>http://repo.spring.io/snapshot</url>
+  		</repository>
+  	</repositories> -->
+  	
+  	
+  	
 
 </project>

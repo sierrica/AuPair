@@ -5,8 +5,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 
 @Controller
+@ApiIgnore
 @PropertySource("classpath:application.properties")
 public class RootController {
 
@@ -18,6 +21,7 @@ public class RootController {
 
 	//@CrossOrigin
     @RequestMapping("/")
+    
     public String index() {
     	//userRepository.save(new User("sierrica2", "tauste"));
 

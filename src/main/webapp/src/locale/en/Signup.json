@@ -1,0 +1,22 @@
+{
+	"legend": "Signup Form",
+  	"email": "email",
+  	"password": "password",
+  	"remember": "Remember me",
+  	"signup": "signup",
+  	"failed": "Signup failed",
+  	"errorLegend": "Bad signup information",
+  	"success": "Signup successful",
+  	"signin": "signin",
+  	"forgot": "Forgot password ?",
+  	"error": {
+  		"userAlreadyRegistered": "User already registered with that email",
+  		"answerPartQuestion": "The answer can't be part of the question",
+		"passwordNotValid": "Password not valid, At least 8 characters, Lowercase, Uppercase, number and no parts of number user"
+  	},
+  	"validate": {
+  		"email": {
+  			"required": "email is required"
+  		}
+  	}
+}
