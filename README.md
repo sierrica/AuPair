@@ -1,3 +1,14 @@
+queda pendiente la actualizacion a webpack 4 porque da un error de compilacion. dev-server funciona correctamente poniendo el --mode development antes de la ejecucion de webpack pero cuando voy a compilar da error. supongo que porque en el javascript que invoco build.js no especifico la variable --mode production en ningun momento.
+es necesario actalizar optimize-css-assets-webpack-plugin, webpack-dev-server y webpack al mismo tiempo.
+Ademas es necesario instalar tambien 2.0.10.
+
+
+
+# Encriptar
+jasypt/bin\encrypt.bat algorithm=PBEWithMD5AndDES password=PASS input="INPUT"
+
+
+
 # AuPair Web App
 App for AuPairs
 
@@ -10,16 +21,20 @@ https://dev-621930.oktapreview.com/login/login.htm
 ## Built With
 * Java Spring Boot
 * PostgreSQL, JDBC, Hibernate/JPA
-* lombok, jackson
-* Logback, Papertrail
+* Maven, Gradle
+* JUnit, Mockito
 * Git, Github
+* OAuth2, JWT, Okta/Stormpath, Jasypt
+* Logback, Slf4j, Papertrail
+* jackson, lombok 
 * HTML5
 * MaterializeCSS, SASS
-* Vue
-* Okta, JsonWebToken
+* Vue, jQuery
 * Webpack
 * Cordova
-* Openshift & Heroku 
+* Apache Tomcat
+* Openshift & Heroku
+* CloudFlare
 
 
 
@@ -97,13 +112,13 @@ oc new-project au-pair --description="AuPair APP" --display-name="AuPair"
 
 >### Create DATASE
 ```
-oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_ADMIN_PASSWORD=taustemix -e POSTGRESQL_DATABASE=aupair centos/postgresql-96-centos7 INSTALL_PKGS=postgresql-plperl
+oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_ADMIN_PASSWORD=taustemix -e POSTGRESQL_DATABASE=aupair centos/postgresql-96-centos7
 ```
 
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production POSTGRESQL_URL=10.130.54.116 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.130.27.74 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
@@ -132,7 +147,7 @@ cordova create cordova com.sierrica.aupair AuPair --link-to=src/main/resources/p
 ```
 cd cordova
 cordova plugin add cordova-plugin-inappbrowser
-cordova plugin add cordova-plugin-console
+
 ```
 
 >### Add platform

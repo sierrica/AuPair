@@ -69,8 +69,6 @@ buildscript {
     	compile.exclude group:'ch.qos.logback'
     }
     dependencies {
-
-
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springVersion}"
         //classpath "io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE"
 
