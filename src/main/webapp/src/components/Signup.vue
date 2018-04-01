@@ -20,7 +20,7 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<i class="material-icons prefix">lock</i>
-	          					<input type="password" id="password" name="password" v-model="user.password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})" title="Username should only contain lowercase letters. e.g. john" data-vv-as="password" data-vv-delay="1000" v-validate="{ rules: { required:true, regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/}}" :class="{'valid': user.password!=null  &&  ! errors.has('password'), 'invalid': errors.has('password') }">
+	          					<input type="password" id="password" name="password" v-model="user.password" required  data-vv-as="password" data-vv-delay="1000" v-validate="{ rules: { required:true, regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/}}" :class="{'valid': user.password!=null  &&  ! errors.has('password'), 'invalid': errors.has('password') }">
 	          					<label for="password" v-html="$t('Signup.password')"></label>
 	          					<span v-show="errors.has('password')" class="error">{{ errors.first('password') }}</span>
 	        				</div>
@@ -28,13 +28,13 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<i class="material-icons prefix">lock</i>
-	          					<input type="password" id="passwordConfirmation" name="passwordConfirmation" data-vv-as="passwordConfirmation" data-vv-delay="4000" v-validate="'required|confirmed:password'" :class="{'valid': fields.passwordConfirmation  && fields.passwordConfirmation.dirty  &&  ! errors.has('passwordConfirmation'),      'invalid': fields.passwordConfirmation  && fields.passwordConfirmation.dirty  &&  errors.has('passwordConfirmation') }">
+	          					<input type="password" id="passwordConfirmation" name="passwordConfirmation" v-model="user.passwordConfirmation" required data-vv-as="passwordConfirmation" data-vv-delay="4000" v-validate="'required|confirmed:password'" :class="{'valid': fields.passwordConfirmation  && fields.passwordConfirmation.dirty  &&  ! errors.has('passwordConfirmation'),      'invalid': fields.passwordConfirmation  && fields.passwordConfirmation.dirty  &&  errors.has('passwordConfirmation') }">
 	          					<label for="passwordConfirmation" v-html="$t('Signup.passwordConfirmation')"></label>
 	          					<span v-show="fields.passwordConfirmation  && fields.passwordConfirmation.dirty  &&  errors.has('passwordConfirmation')" class="error">{{ errors.first('passwordConfirmation') }}</span>
 	        				</div>
 						</div>
 						
-						<div class="row">
+						<!-- <div class="row">
 							<div class="input-field col s12">
 	          					<input type="text" id="firstName" name="firstName" v-model="user.firstName" required data-vv-as="firstName" data-vv-delay="1000" v-validate="'required'" :class="{'valid': fields.firstName  && fields.firstName.dirty  &&  ! errors.has('firstName'),      'invalid': fields.firstName  && fields.firstName.dirty  &&  errors.has('firstName') }">
 	          					<label for="firstName" v-html="$t('Signup.firstName')"></label>
@@ -49,27 +49,23 @@
 	          					<span v-show="fields.lastName  && fields.lastName.dirty  &&  errors.has('lastName')" class="error">{{ errors.first('lastName') }}</span>
 	        				</div>
 						</div>
-						
-
-						
-						
 						<div class="row">
 							<div class="input-field col s12">
-	          					<input type="text" id="securityQuestion" name="securityQuestion" data-vv-delay="1000" v-validate="'required'" :class="{'valid': fields.securityQuestion  && fields.securityQuestion.dirty  &&  ! errors.has('securityQuestion'),      'invalid': fields.securityQuestion  && fields.securityQuestion.dirty  &&  errors.has('securityQuestion') }">
+	          					<input type="text" id="securityQuestion" name="securityQuestion" v-model="user.securityQuestion" required data-vv-as="securityQuestion" data-vv-delay="1000" v-validate="'required'" :class="{'valid': fields.securityQuestion  && fields.securityQuestion.dirty  &&  ! errors.has('securityQuestion'),      'invalid': fields.securityQuestion  && fields.securityQuestion.dirty  &&  errors.has('securityQuestion') }">
 	          					<label for="securityQuestion" v-html="$t('Signup.securityQuestion')"></label>
 	          					<span v-show="fields.securityQuestion  && fields.securityQuestion.dirty  &&  errors.has('securityQuestion')" class="error">{{ errors.first('securityQuestion') }}</span>
 	        				</div>
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-	          					<input type="text" id="securityQuestionAnswer" name="securityQuestionAnswer" data-vv-delay="1000" v-validate="'required'" :class="{'valid': fields.securityQuestionAnswer  && fields.securityQuestionAnswer.dirty  &&  ! errors.has('securityQuestionAnswer'),      'invalid': fields.securityQuestionAnswer  && fields.securityQuestionAnswer.dirty  &&  errors.has('securityQuestionAnswer') }">
+	          					<input type="text" id="securityQuestionAnswer" name="securityQuestionAnswer" v-model="user.securityQuestionAnswer" required data-vv-as="securityQuestionAnswer" data-vv-delay="1000" v-validate="'required'" :class="{'valid': fields.securityQuestionAnswer  && fields.securityQuestionAnswer.dirty  &&  ! errors.has('securityQuestionAnswer'),      'invalid': fields.securityQuestionAnswer  && fields.securityQuestionAnswer.dirty  &&  errors.has('securityQuestionAnswer') }">
 	          					<label for="securityQuestionAnswer" v-html="$t('Signup.securityQuestionAnswer')"></label>
 	          					<span v-show="fields.securityQuestionAnswer  && fields.securityQuestionAnswer.dirty  &&  errors.has('securityQuestionAnswer')" class="error">{{ errors.first('securityQuestionAnswer') }}</span>
 	        				</div>
-						</div>
+						</div> -->
 
-						<div class="row" style="min-height:70px;">
-							<div class="input-field col s12">
+						<!-- <div class="row" style="min-height:70px;">
+							<div class="input-field col s12"> -->
 								<!-- <vue-select :options="locales" label="countryName">
 								    <template slot="option" slot-scope="option">
 								        <i class="material-icons">mail_outline</i>{{ option.countryName }}
@@ -77,11 +73,11 @@
 								</vue-select> -->
 								
 								
-								<select>
+								<!-- <select>
       								<option value="en" v-html="$t('Signup.english')"></option>
       								<option value="es" v-html="$t('Signup.spanish')"></option>
     							</select>
-    							<label>Materialize Select</label>
+    							<label>Materialize Select</label> -->
 								
 								
 								
@@ -97,21 +93,21 @@
 	    							
     							<!-- </label> -->
     							
-    							
+    					<!-- 		
   							</div>
-						</div>
+						</div> -->
 						
 
 						
 						
 						
 						
-						<div class="row">
+						<!-- <div class="row">
 							<div class="input-field col s12">
 	          					<input type="checkbox" id="remember" name="remember" v-model="user.remember" class="validate">
 	          					<label for="remember" v-html="$t('Signup.remember')"></label>
 	        				</div>
-						</div>
+						</div> -->
 						
 						<div class="row">
 							<div class="input-field col s12">
@@ -136,8 +132,182 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 </template>
+
+
+
+<script scoped>
+import he from 'he'
+import auth from '../auth'
+
+
+
+
+
+export default {
+	beforeCreate: function () {
+		var lang = this.$i18n.locale;
+		import(`vee-validate/dist/locale/${lang}`).then(dictionary => {
+			import(`../locale/${lang}/Signup.json`).then(i18n => {
+				this.$validator.localize(lang, dictionary);
+				var jsonDecoded = JSON.parse(he.decode(JSON.stringify(i18n.validate)));
+				this.$validator.localize(lang, { "custom": jsonDecoded });
+			})
+		})
+		
+	},
+	mounted: function () {
+		//$('#locale').material_select();
+		$('#locale').select2({
+			//theme: 'material',
+			width: '100%',
+			placeholder: this.$t('Signup.locale'),
+			minimumResultsForSearch: Infinity,
+			templateResult: function (state) {
+				console.log ("STATEEEEEE")
+				console.log (state)
+				return $('<span><i class="material-icons prefix">lock</i>' + state.text + '</span>');
+								
+			}
+		});
+		
+		//$(".select2-selection__arrow").addClass("material-icons").html("arrow_drop_down");
+		
+		$('#locale').val(this.$i18n.locale);
+		//$('#locale span.select2').css({'margin-top': '30px'});
+	},
+	computed: {
+		isCompleted () {
+			//return this.user.email && this.user.password && this.user.passwordConfirmation && this.user.firstName && this.user.lastName && this.user.securityQuestion && this.user.securityQuestionAnswer;
+			return this.user.email && this.user.password && this.user.passwordConfirmation;
+		}
+	},
+	data () {
+		return {
+			/* locales: [{
+				countryCode: "en",
+			    //countryName: this.$t('Signup.english')
+			    countryName: 'english'
+			},{
+			 	countryCode: "es",
+			    //countryName: this.$t('Signup.spanish')
+			 	countryName: 'spanish'
+			}], */
+			user: {
+				email: null,
+				password: null,
+				passwordConfirmation: null,
+				firstName: null,
+				lastName: null,
+				securityQuestion: null,
+				securityQuestionAnswer: null,
+				locale: this.$i18n.locale,
+				remember: false,
+				error: false
+			}
+		}
+    },
+    methods: {
+    	blur_input (event) {
+    		/* console.log ($(event.target).hasClass('valid'))
+    		console.log ($(event.target).hasClass('invalid')) */
+    		console.log (this.errors);
+/*       		if (this.user.error)
+    			$(event.target).addClass('invalid'); */
+
+    	},
+    	change_input (event) {
+/*     		if (this.user.error   &&   $(event.target).hasClass('invalid')) {
+    			this.user.error = false;
+	    		$(event.target).removeClass('invalid');
+	    		$("button[type='submit']").prop("disabled",false);
+    		} */
+    	},
+    	
+		signup (user) {
+    		console.log ("USUARIO")
+    		console.log (this.user)
+    		if ( ! this.user.error) {
+					//this.user.email = "prueba@example.com";
+					this.user.password = "";
+					this.user.locale = "es";
+					this.user.firstName = "Jesus";
+					this.user.lastName = "Sierra";
+					this.user.securityQuestion = "Jesus";
+					this.user.securityQuestionAnswer = "Maria";
+	  				console.log ("DATOS A ENVIAR")
+	  				console.log (this.user)
+					
+	  				var that = this;
+	  				$.post({
+						url: window.spring + '/signup',
+	  					contentType: 'application/json',
+	  					dataType: 'text json',
+	  					data: JSON.stringify(this.user)
+					}).always(function(data_jqXHR, textStatus, jqXHR_errorThrown) {
+				        if (textStatus === 'success')
+				            var jqXHR = jqXHR_errorThrown;
+				        else
+				            var jqXHR = data_jqXHR;
+				        switch (jqXHR.status) {
+				            case 201:
+								console.log ("CREADO USUARIO");
+								console.log (data_jqXHR);
+						      	break;
+				            case 400:
+								console.log ("ERROR CONTROLADO VALIDACION CREACION USUARIO");
+								console.log (data_jqXHR);
+								console.log (textStatus);
+								console.log (data_jqXHR.responseJSON.message);
+								
+								switch (data_jqXHR.responseJSON.message) {
+									case 'passwordNotBlank':
+									case 'passwordNotNull':
+									case 'emailTooLong':
+									case 'passwordNotValid':
+										$("#password").removeClass('valid').addClass('invalid');
+										Materialize.toast ('<span>' + that.$t('Signup.error.passwordNotValid') + '</span>', 5000, 'red');
+										break;
+									default:
+										console.log ("ERROR DESCONOCIDO")
+										break;
+								}
+
+
+								
+									
+								$("button[type='submit']").prop("disabled",true);
+								$('#legendError').html(that.$t('Signup.error.' + data_jqXHR.responseJSON.message));
+				            	that.user.error = true;
+						      	break;
+						      	
+				            case 409:
+				            	switch (data_jqXHR.responseJSON.message) {
+									case 'userAlreadyRegistered':
+										$("#email").removeClass('valid').addClass('invalid');
+										break;
+									default:
+										console.log ("ERROR DESCONOCIDO")
+										break;
+								}
+						      	
+				            default:
+				            	console.log("ERROR DESCONOCIDO CREACION USUARIO");
+				            	console.log(data_jqXHR);
+				            	console.log("ERROR CREAR USUARIO2");
+				            	console.log(jqXHR_errorThrown);
+				                break;
+				        }
+					});
+
+	        }
+      	}
+    }
+}
+</script>
+
+
 
 <style scoped>
 	.input-field i.material-icons.prefix {
@@ -365,153 +535,3 @@
 
 
 </style>
-
-<script scoped>
-import he from 'he'
-import auth from '../auth'
-
-
-
-
-
-export default {
-	beforeCreate: function () {
-		var lang = this.$i18n.locale;
-		import(`vee-validate/dist/locale/${lang}`).then(dictionary => {
-			import(`../locale/${lang}/Signup.json`).then(i18n => {
-				this.$validator.localize(lang, dictionary);
-				var jsonDecoded = JSON.parse(he.decode(JSON.stringify(i18n.validate)));
-				this.$validator.localize(lang, { "custom": jsonDecoded });
-			})
-		})
-		
-	},
-	mounted: function () {
-		//$('#locale').material_select();
-		$('#locale').select2({
-			//theme: 'material',
-			width: '100%',
-			placeholder: this.$t('Signup.locale'),
-			minimumResultsForSearch: Infinity,
-			templateResult: function (state) {
-				console.log ("STATEEEEEE")
-				console.log (state)
-				return $('<span><i class="material-icons prefix">lock</i>' + state.text + '</span>');
-								
-			}
-		});
-		
-		//$(".select2-selection__arrow").addClass("material-icons").html("arrow_drop_down");
-		
-		$('#locale').val(this.$i18n.locale);
-		//$('#locale span.select2').css({'margin-top': '30px'});
-	},
-	computed: {
-		isCompleted () {
-			return this.user.email && this.user.password && this.user.passwordConfirmation && this.user.firstName && this.user.lastName && this.user.securityQuestion && this.user.securityQuestionAnswer;
-		}
-	},
-	data () {
-		return {
-			/* locales: [{
-				countryCode: "en",
-			    //countryName: this.$t('Signup.english')
-			    countryName: 'english'
-			},{
-			 	countryCode: "es",
-			    //countryName: this.$t('Signup.spanish')
-			 	countryName: 'spanish'
-			}], */
-			user: {
-				email: null,
-				password: null,
-				passwordConfirmation: null,
-				firstName: null,
-				lastName: null,
-				securityQuestion: null,
-				securityQuestionAnswer: null,
-				locale: this.$i18n.locale,
-				remember: false,
-				error: false
-			}
-		}
-    },
-    methods: {
-    	blur_input (event) {
-    		/* console.log ($(event.target).hasClass('valid'))
-    		console.log ($(event.target).hasClass('invalid')) */
-    		console.log (this.errors);
-/*       		if (this.user.error)
-    			$(event.target).addClass('invalid'); */
-
-    	},
-    	change_input (event) {
-/*     		if (this.user.error   &&   $(event.target).hasClass('invalid')) {
-    			this.user.error = false;
-	    		$(event.target).removeClass('invalid');
-	    		$("button[type='submit']").prop("disabled",false);
-    		} */
-    	},
-    	
-		signup (user) {
-    		console.log ("USUARIO")
-    		console.log (this.user)
-    		if ( ! this.user.error) {
-					//this.user.email = "prueba@example.com";
-					//this.user.locale = "es";
-					//this.user.password = "Taustemix8888";
-					//this.user.firstName = "Jesus";
-					//this.user.lastName = "Sierra";
-					//this.user.securityQuestion = "Jesus";
-					//this.user.securityQuestionAnswer = "Maria";
-	  				console.log ("DATOS A ENVIAR")
-	  				console.log (this.user)
-					
-	  				var that = this;
-	  				$.post({
-						url: window.spring + '/signup',
-	  					contentType: 'application/json',
-	  					dataType: 'text json',
-	  					data: JSON.stringify(this.user)
-					}).always(function(data_jqXHR, textStatus, jqXHR_errorThrown) {
-				        if (textStatus === 'success')
-				            var jqXHR = jqXHR_errorThrown;
-				        else
-				            var jqXHR = data_jqXHR;
-				        switch (jqXHR.status) {
-				            case 201:
-								console.log ("CREADO USUARIO");
-								console.log (data_jqXHR);
-						      	break;
-				            case 400:
-								console.log ("ERROR CONTROLADO CREACION USUARIO");
-								console.log (data_jqXHR);
-								console.log (textStatus);
-								console.log (data_jqXHR.responseJSON.message);
-								
-								if (data_jqXHR.responseJSON.message == 'userAlreadyRegistered')
-									$("#email").removeClass('valid').addClass('invalid');
-								else if (data_jqXHR.responseJSON.message == 'passwordNotValid')
-									$("#password").removeClass('valid').addClass('invalid');
-/* 								else if (data_jqXHR.responseJSON.message == 'answerPartQuestion')
-									$("#email").addClass('invalid'); */
-
-								$("button[type='submit']").prop("disabled",true);
-								$('#legendError').html(that.$t('Signup.error.' + data_jqXHR.responseJSON.message));
-				            	Materialize.toast ('<span>' + that.$t('Signup.error.' + data_jqXHR.responseJSON.message) + '</span>', 5000, 'red');
-				            	that.user.error = true;
-						      	break;
-				            default:
-				            	console.log("ERROR DESCONOCIDO CREACION USUARIO");
-				            	console.log(data_jqXHR);
-				            	console.log("ERROR CREAR USUARIO2");
-				            	console.log(jqXHR_errorThrown);
-				                break;
-				        }
-					});
-
-	        }
-      	}
-    }
-}
-</script>

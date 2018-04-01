@@ -16,11 +16,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ExceptionController {
 
+
+	
+    @ExceptionHandler({InvalidInputException.class})
+    protected ResponseEntity<ExceptionResponse> handleInvalidInput(InvalidInputException ex) {
+        ExceptionResponse response = new ExceptionResponse (HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
+    }
+	
 	@ExceptionHandler(value={DataIntegrityViolationException.class})
     public ResponseEntity<ExceptionResponse> handleDataIntegrityViolationException (DataIntegrityViolationException ex) {
 		LOG.error(ex.getStackTrace().toString());
-        ExceptionResponse response = new ExceptionResponse (HttpStatus.BAD_REQUEST.value(), ex.getMessage());
-        return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
+        ExceptionResponse response = new ExceptionResponse (HttpStatus.CONFLICT.value(), ex.getMessage());
+        return new ResponseEntity<ExceptionResponse>(response, HttpStatus.CONFLICT);
     }
 	
 	
@@ -31,11 +39,7 @@ public class ExceptionController {
         return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({InvalidInputException.class})
-    protected ResponseEntity<ExceptionResponse> handleInvalidInput(InvalidInputException ex) {
-        ExceptionResponse response = new ExceptionResponse (HttpStatus.BAD_REQUEST.value(), ex.getMessage());
-        return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
-    }
+
     
     @ExceptionHandler({ResourceNotFoundException.class})
     protected ResponseEntity<ExceptionResponse> handleResourceNotFound(ResourceNotFoundException ex) {

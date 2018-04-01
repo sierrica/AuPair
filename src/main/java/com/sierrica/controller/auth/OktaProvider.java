@@ -1,6 +1,12 @@
 package com.sierrica.controller.auth;
 
+import java.io.IOException;
+
 import org.springframework.util.Assert;
+
+import com.nimbusds.oauth2.sdk.ParseException;
+import com.okta.jwt.JwtHelper;
+import com.okta.jwt.JwtVerifier;
 import com.okta.sdk.authc.credentials.TokenClientCredentials;
 import com.okta.sdk.client.Client;
 import com.okta.sdk.client.Clients;
@@ -8,6 +14,7 @@ import com.okta.sdk.resource.user.UserBuilder;
 import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
 import com.sierrica.exception.custom.InvalidInputException;
+import com.sierrica.model.Credentials;
 import com.sierrica.model.User;
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,6 +65,26 @@ OktaClientProperties oktaClientProperties;
 		        	.buildAndCreate(client);
 			System.out.println("User created with ID: " + user_okta.getProfile().getEmail());
 		
+			
+			
+//			try {
+//				JwtVerifier jwtVerifier = new JwtHelper()
+//					    .setIssuerUrl("https://{yourOktaDomain}.com/oauth2/default")
+//					    .setAudience("api://default")  // defaults to 'api://default'
+//					    .setConnectionTimeout(1000)    // defaults to 1000ms
+//					    .setReadTimeout(1000)          // defaults to 1000ms
+//					    .setClientId("your_client_id") // optional
+//					    .build();
+//			} catch (ParseException | IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+			  
+			
+			
+			
+			
     		//"rwh3vH166HCH/NT9XV5FYu"
     		//qaMqvAPULkbiQzkTCWo5XDcvzpk8Tna
     		//TextEncryptor encryptor = Encryptors.text("password", "991239bab013");

@@ -1,6 +1,10 @@
 package com.sierrica.controller.auth;
 
 import org.springframework.util.Assert;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
 import com.sierrica.dao.UserRepository;
-
+import com.sierrica.exception.ExceptionResponse;
 import com.sierrica.exception.custom.InvalidInputException;
+import com.sierrica.model.Credentials;
 import com.sierrica.model.types.StatusType;
 
 import io.swagger.annotations.Api;
@@ -22,6 +27,7 @@ import io.swagger.annotations.ApiOperation;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -32,6 +38,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 
 @RestController
@@ -89,30 +96,35 @@ private TokenProvider tokenProvider;
 //		    return new ResponseEntity<ExceptionResponse>(new ExceptionResponse (HttpStatus.BAD_REQUEST.value(), e.getRootCause().getMessage()), HttpStatus.BAD_REQUEST);
 //    }
 
-    @PostMapping(path="/signup", consumes = { MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE})
+    
+
+    
+    
+	
+	@PostMapping(path="/signup", consumes = { MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE})
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     //@Transactional
-    public void signup(@Valid @RequestBody com.sierrica.model.User user) {
+    public void signup(@Valid @RequestBody com.sierrica.model.User user, Errors errors) {
+    	
+		// Check errors
+		if (errors.hasErrors())
+    		throw new InvalidInputException(errors.getFieldError().getDefaultMessage());
 
-    	String patternPassword = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
-    	if ( ! user.getPassword().matches(patternPassword))
-    		throw new InvalidInputException("passwordNotValid");
-    	
-    	
-    	
-		user.setStatus(StatusType.ACTIVE);
-		
+		// Save in Database
 		try {
+			user.setStatus(StatusType.ACTIVE);
 			userRepository.save(user);
 		}
 		catch (DataIntegrityViolationException e) {
 			if (e.getRootCause().getMessage().contains("duplicate key value violates unique constraint")  &&  e.getRootCause().getMessage().contains("email"))
-				throw new InvalidInputException("userAlreadyRegistered");
+				throw new DataIntegrityViolationException("userAlreadyRegistered");
 			else
 				throw e;
 		}
 		
+
+		// Token Provider
 		try {
 			tokenProvider.signup(user);
 		}
@@ -127,6 +139,11 @@ private TokenProvider tokenProvider;
 		
 		LOG.info("User created with email: " + user.getEmail());
     }
+    
+    
+    
+    
+    
     
     
     @RequestMapping("/403")

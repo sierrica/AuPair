@@ -5,7 +5,7 @@ Ademas es necesario instalar tambien 2.0.10.
 
 
 # Encriptar
-jasypt/bin\encrypt.bat algorithm=PBEWithMD5AndDES password=PASS input="INPUT"
+jasypt\bin\encrypt.bat algorithm=PBEWithMD5AndDES password=PASS input="INPUT"
 
 
 
@@ -118,7 +118,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.130.26.20 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.6.24 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route

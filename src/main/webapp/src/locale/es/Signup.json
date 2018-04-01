@@ -18,6 +18,7 @@
   	"signin": "Acceder",
   	"forgot": "&iquest;Ha olvidado la contrase&ntilde;a?",
    	"error": {
+   		"unknown": "Error inestable enviado al administrador.<br>Reinicie la aplicacion por favor.",
    		"userAlreadyRegistered": "Usuario ya registrado con ese email",
    		"answerPartQuestion": "La respuesta no puede formar parte de la pregunta",
   		"passwordNotValid": "Contrase&ntilde;a no v&aacute;lida, al menos 8 car&aacute;cteres, letra min&uacute;scula, letra may&uacute;scula, un n&uacute;mero y no partes de tu nombre de usuario"

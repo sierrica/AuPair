@@ -8,6 +8,9 @@
 	<!-- Properties -->​
 	<springProperty scope="context" name="loggingFile" source="logging.file"/>
 	<springProperty scope="context" name="profileActive" source="spring.profiles.active"/>
+	
+	<springProperty  name="papertrailPort" source="papertrail.port"/>
+	
 
 	<!-- Example for logging into the build folder of your project -->
 	<property name="LOG_FILE" value="${loggingFile}"/>​
@@ -79,6 +82,22 @@
 		</encoder>
 	</appender>
 	
+	
+	
+	<!-- ERROR TRACING -->
+	<!-- Sentry -->
+    <appender name="sentry" class="io.sentry.logback.SentryAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+	
+	
+	
+	
+	
+	<!-- LOGS -->
+	<!-- Papertrail -->
 	<appender name="papertrail" class="com.papertrailapp.logback.Syslog4jAppender">
 	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
         	<level>WARN</level>
@@ -90,11 +109,11 @@
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig"> -->
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.TCPNetSyslogConfig"> Es necesario activarlo desde la web, por defecto esta deshabilitado -->
 			<host>logs2.papertrailapp.com</host>
-			<port>21848</port>
+			<port>${papertrailPort}</port>
 			<sendLocalName>false</sendLocalName>
 			<sendLocalTimestamp>false</sendLocalTimestamp>
 			<maxMessageLength>102400</maxMessageLength>
-			</syslogConfig>
+		</syslogConfig>
 	</appender>
 
 ​
@@ -106,6 +125,7 @@
 		<if condition='new String("${profileActive}").contains("production")'>
         	<then>
 				<appender-ref ref="papertrail"/>
+				<appender-ref ref="sentry"/>
 			</then>
 		</if>
 	</root>

@@ -1,5 +1,6 @@
 package com.sierrica.controller.auth;
 
+import com.sierrica.model.Credentials;
 import com.sierrica.model.User;
 
 

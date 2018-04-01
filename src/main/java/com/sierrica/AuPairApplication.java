@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
+import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 
 
 @SpringBootApplication
@@ -49,13 +50,21 @@ public class AuPairApplication extends SpringBootServletInitializer {
 //        };
 //    }
 	
+	
+    private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder application) {
+    	// environment necesario para leer desde logback properties encriptadas
+		return application.environment(new StandardEncryptableEnvironment()).sources(AuPairApplication.class);
+	}
+	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(AuPairApplication.class);
+		return configureApplication(application);
 	}
 	
 	/* Run */
     public static void main(String[] args) {
-        SpringApplication.run(AuPairApplication.class, args);
+        //SpringApplication.run(AuPairApplication.class, args);
+        configureApplication(new SpringApplicationBuilder()).run(args);
     }
+ 
 }
