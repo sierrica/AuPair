@@ -103,7 +103,7 @@
         	<level>WARN</level>
     	</filter>
     	<layout class="ch.qos.logback.classic.PatternLayout">
-	      <pattern>%d{MMM dd HH:mm:ss} Windows-Development AuPairApplication: %-5level %logger{35}: %m%n%xEx</pattern>
+	      <pattern>%d{MMM dd HH:mm:ss} ${profileActive} AuPairApplication: %-5level %logger{35}: %m%n%xEx</pattern>
 	    </layout>
 	    <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.ssl.SSLTCPNetSyslogConfig">
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig"> -->
