@@ -71,9 +71,7 @@ private MockMvc mockMvc;
         	client.getUser("prueba@example.com").deactivate();
         	client.getUser("prueba@example.com").delete();
     	}
-//    	catch (java.net.UnknownHostException f) {
-//    		System.err.println("ERROR DE CONEXION CON OKTA");
-//    	}
+
     	catch (com.okta.sdk.resource.ResourceException e) {
     		System.err.println("No existe ese usuario");
     		throw e;
