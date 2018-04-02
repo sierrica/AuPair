@@ -1,7 +1,10 @@
 package com.sierrica;
 
 
-import org.springframework.boot.SpringApplication;
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.InitializingBean;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
@@ -12,11 +15,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnvironment;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @SpringBootApplication
+@Slf4j
 @EnableEncryptableProperties
 //@EnableScheduling
 @ComponentScan("com.sierrica")
@@ -25,35 +32,33 @@ import com.ulisesbocchio.jasyptspringboot.environment.StandardEncryptableEnviron
 @EnableJpaRepositories(basePackages={"com.sierrica.dao"})
 //@EnableJpaAuditing
 @EnableTransactionManagement
-public class AuPairApplication extends SpringBootServletInitializer {
-	
-//	@Bean
-//	  public AuditorAware<AuditableUser> auditorProvider() {
-//	    return new AuditorAwareImpl();
-//	}
-	
-	
-//	@Bean
-//    public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
-//        return new Jackson2ObjectMapperBuilder()
-//                .propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-//    }
+public class AuPairApplication extends SpringBootServletInitializer implements InitializingBean {
 	
 
-//	@Bean
-//    public AuditDateAware<Instant> auditDateAware() {
-//        return new AuditDateAware<Instant>() {
-//            @Override
-//            public Instant getCurrentDate() {
-//                return new Instant();
-//            }
-//        };
-//    }
 	
+	
+	public AuPairApplication() {
+        LOG.info("Constructor AuPairApplication");
+    }
+	
+    @PostConstruct
+    public void postConstruct() {
+        LOG.info("POSTCONTRUCT");
+    }
+    
+	@Override
+    public void afterPropertiesSet() throws Exception {
+        LOG.info("InitializingBean");
+    }
+    
+    public void init() {
+        LOG.info("init-method");
+    }
+	
+
 	
     private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder application) {
-    	// environment necesario para leer desde logback properties encriptadas
-		return application.environment(new StandardEncryptableEnvironment()).sources(AuPairApplication.class);
+		return application.environment(new StandardEncryptableEnvironment()).sources(AuPairApplication.class);		// environment necesario para leer desde logback properties encriptadas
 	}
 	
 	@Override
@@ -63,8 +68,32 @@ public class AuPairApplication extends SpringBootServletInitializer {
 	
 	/* Run */
     public static void main(String[] args) {
-        //SpringApplication.run(AuPairApplication.class, args);
         configureApplication(new SpringApplicationBuilder()).run(args);
     }
+    
+
+    
+//	@Bean
+//	  public AuditorAware<AuditableUser> auditorProvider() {
+//	    return new AuditorAwareImpl();
+//	}
+	
+	
+//	@Bean
+//  public Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder() {
+//      return new Jackson2ObjectMapperBuilder()
+//              .propertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+//  }
+	
+
+//	@Bean
+//  public AuditDateAware<Instant> auditDateAware() {
+//      return new AuditDateAware<Instant>() {
+//          @Override
+//          public Instant getCurrentDate() {
+//              return new Instant();
+//          }
+//      };
+//  }
  
 }

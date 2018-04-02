@@ -7,17 +7,25 @@
 	
 	<!-- Properties -->​
 	<springProperty scope="context" name="loggingFile" source="logging.file"/>
-	<springProperty scope="context" name="profileActive" source="spring.profiles.active"/>
 	
-	<springProperty  name="papertrailPort" source="papertrail.port"/>
+	<springProperty  name="nodeEnv" source="NODE_ENV"/>
+	<springProperty  name="platform" source="PLATFORM"/>
 	
+	<springProperty  name="applicationName" source="spring.application.name"/>
+	<springProperty  name="applicationVersion" source="spring.application.version"/>
 
+	<springProperty  name="papertrailHost" source="papertrail.host"/>
+	<springProperty  name="papertrailPort" source="papertrail.port"/>
+	<springProperty  name="sentryDsn" source="sentry.dsn"/>
+	<springProperty  name="bugsnagKey" source="bugsnag.key"/>
+	<springProperty  name="rollbarKey" source="rollbar.key"/>
+
+	
 	<!-- Example for logging into the build folder of your project -->
 	<property name="LOG_FILE" value="${loggingFile}"/>​
 
 	<!-- Pattern for console and files -->
-	<property name="CONSOLE_LOG_PATTERN"
-			  value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+	<property name="CONSOLE_LOG_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
 
 
 	<!-- Appender to log to console -->
@@ -84,48 +92,70 @@
 	
 	
 	
-	<!-- ERROR TRACING -->
+	<!-- SAAS ERROR TRACING -->
 	<!-- Sentry -->
-    <appender name="sentry" class="io.sentry.logback.SentryAppender">
+    <appender name="sentry" class="com.getsentry.raven.logback.SentryAppender">
+    <!-- <appender name="sentry" class="io.sentry.logback.SentryAppender"> -->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>WARN</level>
         </filter>
+        <dsn>${sentryDsn}</dsn>
+    	<release>${applicationVersion}</release>
     </appender>
 	
+	<!-- Rollbar -->
+	<appender name="rollbar" class="com.tapstream.rollbar.RollbarAppender">
+	 	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        	<level>WARN</level>
+    	</filter>
+    	<apiKey>${rollbarKey}</apiKey>
+    	<environment>${platform}-${nodeEnv}</environment>
+	</appender>
 	
+	<!-- Bugsnag - No funciona con logback -->
+	<appender name="bugsnag" class="com.codereligion.bugsnag.logback.Appender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        	<level>WARN</level>
+    	</filter>
+	    <apiKey>${bugsnagKey}</apiKey>
+	    <sslEnabled>true</sslEnabled>
+	</appender>
 	
-	
-	
-	<!-- LOGS -->
+
+
+	<!-- SAAS LOGS -->
 	<!-- Papertrail -->
 	<appender name="papertrail" class="com.papertrailapp.logback.Syslog4jAppender">
 	    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
         	<level>WARN</level>
     	</filter>
     	<layout class="ch.qos.logback.classic.PatternLayout">
-	      <pattern>%d{MMM dd HH:mm:ss} ${profileActive} AuPairApplication: %-5level %logger{35}: %m%n%xEx</pattern>
+	      <pattern>%d{MMM dd HH:mm:ss} ${platform}-${nodeEnv} ${applicationName}: %-5level %logger{35}: %m%n%xEx</pattern>
 	    </layout>
 	    <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.ssl.SSLTCPNetSyslogConfig">
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig"> -->
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.TCPNetSyslogConfig"> Es necesario activarlo desde la web, por defecto esta deshabilitado -->
-			<host>logs2.papertrailapp.com</host>
+			<host>${papertrailHost}</host>
 			<port>${papertrailPort}</port>
 			<sendLocalName>false</sendLocalName>
 			<sendLocalTimestamp>false</sendLocalTimestamp>
 			<maxMessageLength>102400</maxMessageLength>
 		</syslogConfig>
 	</appender>
-
-​
+	
+	
+	<!-- Main root -->
 	<root level="INFO">
 		<appender-ref ref="console"/>
 		<appender-ref ref="flatfile"/>
 		<appender-ref ref="logstash"/>
-		<!-- <if condition='new String("${profileActive}").contains("development")'> -->
-		<if condition='new String("${profileActive}").contains("production")'>
+		<if condition='new String("${nodeEnv}").equals("production")'>
         	<then>
-				<appender-ref ref="papertrail"/>
-				<appender-ref ref="sentry"/>
+				<!-- <appender-ref ref="papertrail"/> -->
+				<!-- <appender-ref ref="sentry"/> -->
+				<!-- <appender-ref ref="rollbar"/> -->
+				<!-- No funciona -->
+				<!-- <appender-ref ref="bugsnag"/> -->
 			</then>
 		</if>
 	</root>

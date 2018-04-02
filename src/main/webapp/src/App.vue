@@ -104,7 +104,7 @@ export default {
 
 /*@import '../../../../node_modules/font-awesome/css/font-awesome.css'; */
 
-@import '../../../../node_modules/materialize-css/dist/css/materialize.css';
+/* @import '../../../../node_modules/materialize-css/dist/css/materialize.css'; */
 
 
 
@@ -118,9 +118,7 @@ html, body {
 
 
 html, body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol";
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #2c3e50;
 }
 
@@ -175,34 +173,6 @@ footer {
 .inAppBrowserWrap menu li.disabled {
 	color: #777;
 }
-
-
-
-
-
-/* Material Icons */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(assets/material-icons.woff2) format('woff2');
-}
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
 
 
 </style>

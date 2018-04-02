@@ -6,4 +6,4 @@ VALUES ('sierrica@hotmail.com', 'ACTIVE', 'es', 'Javier', 'Sierra', 'tauste', 'N
 
 --SET timezone = ':Europe/Berlin';
 
---select now() at time zone 'America/New_York';
+select now() at time zone 'America/New_York';

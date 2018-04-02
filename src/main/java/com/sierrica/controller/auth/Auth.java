@@ -2,9 +2,6 @@ package com.sierrica.controller.auth;
 
 import org.springframework.util.Assert;
 import org.springframework.validation.Errors;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.okta.spring.config.OktaClientProperties;
 import com.okta.spring.config.OktaOAuth2Properties;
 import com.sierrica.dao.UserRepository;
-import com.sierrica.exception.ExceptionResponse;
+
 import com.sierrica.exception.custom.InvalidInputException;
 import com.sierrica.model.Credentials;
 import com.sierrica.model.types.StatusType;
@@ -27,7 +25,6 @@ import io.swagger.annotations.ApiOperation;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -38,11 +35,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 
 
 @RestController
 @Slf4j
+
 @Api(value = "Book API", description = "Book API", produces = "application/json", tags = {"API"})
 public class Auth {
 

@@ -4,7 +4,7 @@ import 'materialize-css/dist/css/materialize.css'
 //import 'ionicons/dist/css/ionicons.css'
 import 'font-awesome/css/font-awesome.css'
 import 'material-design-icons/iconfont/material-icons.css'
-import 'flag-icon-css/css/flag-icon.css'
+//import 'flag-icon-css/css/flag-icon.css'
 
 import 'select2/dist/css/select2.css'
 import 'select2/dist/js/select2.js'
@@ -62,6 +62,7 @@ var app = {
 			document.addEventListener('deviceready', this.onDeviceReady, false)
 		 
 		var that = this;
+		
 		$.ajax({
 			url: window.spring + '/credentials',
 			method: 'get',

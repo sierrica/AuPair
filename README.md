@@ -25,8 +25,8 @@ https://dev-621930.oktapreview.com/login/login.htm
 * JUnit, Mockito
 * Git, Github
 * OAuth2, JWT, Okta/Stormpath, Jasypt
-* Logback, Slf4j, Papertrail
-* jackson, lombok 
+* Slf4j, Logback, Sentry, Rollbar, Bugsnag, Papertrail
+* jackson, Gson, lombok
 * HTML5
 * MaterializeCSS, SASS
 * Vue, jQuery
@@ -118,7 +118,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.46 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.86 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
@@ -147,7 +147,6 @@ cordova create cordova com.sierrica.aupair AuPair --link-to=src/main/resources/p
 ```
 cd cordova
 cordova plugin add cordova-plugin-inappbrowser
-
 ```
 
 >### Add platform
@@ -159,7 +158,8 @@ cordova platform add ios
 ```
 
 >### Build for Android
-```cd cordova
+```
+cd cordova
 cordova build android
 ```
 

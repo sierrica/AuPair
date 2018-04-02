@@ -1,1 +1,13 @@
-{"name":"com.sierrica.aupair","version":"1.0.0","displayName":"AuPair","cordova":{"platforms":["android"]},"dependencies":{"cordova-android":"~7.0.0"}}
+{
+  "name": "com.sierrica.aupair",
+  "version": "1.0.0",
+  "displayName": "AuPair",
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-android": "~7.0.0"
+  }
+}

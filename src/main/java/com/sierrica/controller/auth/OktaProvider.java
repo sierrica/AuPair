@@ -1,12 +1,6 @@
 package com.sierrica.controller.auth;
 
-import java.io.IOException;
-
 import org.springframework.util.Assert;
-
-import com.nimbusds.oauth2.sdk.ParseException;
-import com.okta.jwt.JwtHelper;
-import com.okta.jwt.JwtVerifier;
 import com.okta.sdk.authc.credentials.TokenClientCredentials;
 import com.okta.sdk.client.Client;
 import com.okta.sdk.client.Clients;
@@ -67,18 +61,15 @@ OktaClientProperties oktaClientProperties;
 		
 			
 			
-//			try {
-//				JwtVerifier jwtVerifier = new JwtHelper()
-//					    .setIssuerUrl("https://{yourOktaDomain}.com/oauth2/default")
-//					    .setAudience("api://default")  // defaults to 'api://default'
-//					    .setConnectionTimeout(1000)    // defaults to 1000ms
-//					    .setReadTimeout(1000)          // defaults to 1000ms
-//					    .setClientId("your_client_id") // optional
-//					    .build();
-//			} catch (ParseException | IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+			/*
+				JwtVerifier jwtVerifier = new JwtHelper()
+					    .setIssuerUrl("https://{yourOktaDomain}.com/oauth2/default")
+					    .setAudience("api://default")  // defaults to 'api://default'
+					    .setConnectionTimeout(1000)    // defaults to 1000ms
+					    .setReadTimeout(1000)          // defaults to 1000ms
+					    .setClientId("your_client_id") // optional
+					    .build();
+			*/
 			
 			  
 			
