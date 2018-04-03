@@ -25,7 +25,45 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<nexus.url>http://192.168.0.140:8082</nexus.url>
 	</properties>
+
+
+	<!-- Scm -->
+	<scm>
+   		<connection>scm:git:https://github.com/sierrica/AuPair.git</connection>
+   		<url>https://github.com/sierrica/AuPair</url>
+   		<developerConnection>scm:git:https://github.com/sierrica/AuPair.git</developerConnection>
+	</scm>
+
+
+
+	<!-- ***** Nexus ***** -->
+	<!-- Deploy to Nexus -->
+  	<distributionManagement>
+	    <snapshotRepository>
+	    	<id>nexus-snapshots</id>
+	      	<url>${nexus.url}/repository/maven-snapshots/</url>
+	    </snapshotRepository>
+	    <repository>
+	      	<id>nexus-releases</id>
+	      	<url>${nexus.url}/repository/maven-releases/</url>
+	    </repository>
+  	</distributionManagement>
+  	
+	<!-- Dependencies from Nexus -->
+	<!-- <repositories>
+    	<repository>
+      		<id>maven-group</id>
+      		<url>${nexus.url}/repository/maven-group/</url>
+    	</repository>
+  	</repositories> -->
+  	
+
+
+
+
+
 
 
 	<!-- ***** Build ***** -->
@@ -41,6 +79,13 @@
 		<resources>
             <resource>
         		<directory>src/main/java</directory>
+        		<filtering>true</filtering>
+        		<includes>
+            		<include>com/sierrica/**/*.java</include>
+        		</includes>
+			</resource>
+			<resource>
+        		<directory>src/test/java</directory>
         		<filtering>true</filtering>
         		<includes>
             		<include>com/sierrica/**/*.java</include>
@@ -94,6 +139,11 @@
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-surefire-plugin</artifactId>
     			<version>2.21.0</version><!--$NO-MVN-MAN-VER$ -->
+    			<configuration>
+    			<excludes>
+            		<exclude>com/descarted/**/*.java</exclude>
+          		</excludes>
+          		</configuration>
   			</plugin>
 			
 			<!-- Maven War -->
@@ -133,6 +183,23 @@
 					<excludeDevtools>true</excludeDevtools>
 				</configuration>
 			</plugin>
+
+			<!-- Maven Deploy -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			   	<artifactId>maven-deploy-plugin</artifactId>
+			   	<version>2.8.2</version><!--$NO-MVN-MAN-VER$ -->
+			   	<executions>
+			      	<execution>
+			         	<id>default-deploy</id>
+			         	<phase>deploy</phase>
+			         	<goals>
+			            	<goal>deploy</goal>
+			         	</goals>
+			      	</execution>
+			   	</executions>
+			</plugin>
+
 
 
 			<!-- Spring Boot Node-Npm plugin -->

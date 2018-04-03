@@ -22,8 +22,8 @@ https://dev-621930.oktapreview.com/login/login.htm
 * Java Spring Boot
 * PostgreSQL, JDBC, Hibernate/JPA
 * Maven, Gradle
-* JUnit, Mockito
-* Git, Github
+* JUnit, Mockito, E2E, Karma, Jest, Mocha, Phantom, Sinon, Chai
+* Git, GitHub, GitLab, Jenkins, Nexus
 * OAuth2, JWT, Okta/Stormpath, Jasypt
 * Slf4j, Logback, Sentry, Rollbar, Bugsnag, Papertrail
 * jackson, Gson, lombok
@@ -33,8 +33,10 @@ https://dev-621930.oktapreview.com/login/login.htm
 * Webpack
 * Cordova
 * Apache Tomcat
+* Docker, Kubernetes
 * Openshift & Heroku
 * CloudFlare
+* Eclipse, Jetbrains, Sublime, pgAdmin
 
 
 
@@ -52,6 +54,40 @@ mvn spring-boot:run
 ```
 mvn spring-boot:run
 ```
+
+
+## Nexus
+>### User y pass por defecto para acceder como admin
+```
+admin/admin123
+```
+
+>### Cambiar el puerto por defecto de 8081 a 8082
+```
+$install-dir/etc/nexus-default.properties
+```
+
+>### Arrancar manualmente el servidor
+```
+./nexus.exe /run
+```
+
+>### Install as service in windows. Create a service called "nexus" in automatic
+```
+./nexus.exe /install
+```
+
+
+
+
+## Jenkins
+
+>### Instalar el .msi y acceder a la web por defecto a http://localhost:8080 y rellenar los datos iniciales como usuario admin, plugins, etc.
+>### Cambiar el puerto en el fichero C:\Program Files (x86)\Jenkins\jenkins.xml
+
+
+
+
 
 
 
@@ -118,7 +154,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.33 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.47 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
