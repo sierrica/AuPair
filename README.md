@@ -4,10 +4,10 @@ Ademas es necesario instalar tambien 2.0.10.
 
 
 # AuPair Web App
-App for AuPairs
+App for AuPairs 
 
 ## Built With
-* Java Spring Boot
+* Java Spring Boot2
 * PostgreSQL, DAO, JDBC, PL/SQL, Hibernate/JPA
 * Maven, Gradle
 * NPM
