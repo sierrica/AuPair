@@ -8,7 +8,7 @@ module.exports = {
     proxyTable: {},
 
     // Dev Server settings
-    port: 8080,  					// 8080 for webpack devserver y 8081 for backend Java Spring
+    //port: 8080,  					// 8080 for webpack devserver y 8081 for backend Java Spring
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

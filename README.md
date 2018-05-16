@@ -1,43 +1,40 @@
 queda pendiente la actualizacion a webpack 4 porque da un error de compilacion. dev-server funciona correctamente poniendo el --mode development antes de la ejecucion de webpack pero cuando voy a compilar da error. supongo que porque en el javascript que invoco build.js no especifico la variable --mode production en ningun momento.
-es necesario actalizar optimize-css-assets-webpack-plugin, webpack-dev-server y webpack al mismo tiempo.
+es necesario actalizar vue-loader, optimize-css-assets-webpack-plugin, webpack-dev-server y webpack al mismo tiempo.
 Ademas es necesario instalar tambien 2.0.10.
-
-
-
-# Encriptar
-jasypt\bin\encrypt.bat algorithm=PBEWithMD5AndDES password=PASS input="INPUT"
-
 
 
 # AuPair Web App
 App for AuPairs
 
-# Okta company
-```
-sierrica-dev-621930
-https://dev-621930.oktapreview.com/login/login.htm
-```
-
 ## Built With
 * Java Spring Boot
-* PostgreSQL, JDBC, Hibernate/JPA
+* PostgreSQL, DAO, JDBC, PL/SQL, Hibernate/JPA
 * Maven, Gradle
-* JUnit, Mockito, E2E, Karma, Jest, Mocha, Phantom, Sinon, Chai
-* Git, GitHub, GitLab, Jenkins, Nexus
+* NPM
+* JUnit, Mockito, Jacoco, SonarQube
+* E2E, Karma, Jest, Mocha, Sinon, Chai, Phantom
+* Git, GitHub, GitLab, Nexus
 * OAuth2, JWT, Okta/Stormpath, Jasypt
 * Slf4j, Logback, Sentry, Rollbar, Bugsnag, Papertrail
-* jackson, Gson, lombok
+* Google Analitycs
+* Jackson, Gson
+* Lombok
 * HTML5
-* MaterializeCSS, SASS
+* MaterializeCSS, SASS, PostCSS
 * Vue, jQuery
-* Webpack
+* Webpack, Babel
 * Cordova
-* Apache Tomcat
+* Electron
+* Tomcat, Jenkins
 * Docker, Kubernetes
-* Openshift & Heroku
+* Openshift, Heroku
 * CloudFlare
 * Eclipse, Jetbrains, Sublime, pgAdmin
+* Windows, Linux, Raspbian
 
+
+# Encriptar
+jasypt\bin\encrypt.bat algorithm=PBEWithMD5AndDES password=PASS input="INPUT"
 
 
 ## Getting Started
@@ -47,12 +44,22 @@ https://dev-621930.oktapreview.com/login/login.htm
 
 ## Running the Application
 ```
-mvn spring-boot:run
+mvn clean spring-boot:run
 ```
 
 ## Executing the tests
 ```
-mvn spring-boot:run
+mvn clean test sonar:sonar
+```
+
+
+
+
+## SonarQube
+>### URL, user y pass por defecto para acceder como admin
+```
+http://localhost:9000
+admin/admin
 ```
 
 
@@ -84,7 +91,7 @@ $install-dir/etc/nexus-default.properties
 
 >### Instalar el .msi y acceder a la web por defecto a http://localhost:8080 y rellenar los datos iniciales como usuario admin, plugins, etc.
 >### Cambiar el puerto en el fichero C:\Program Files (x86)\Jenkins\jenkins.xml
-
+>### Instalar el plugin: Environment Injector Plugin para poder insertar Variables de Entorno
 
 
 
@@ -129,11 +136,10 @@ oc login https://api.starter-ca-central-1.openshift.com
 ```
 
 
-oc get pods
-oc rsh <pod>
 
-Dir donde se ubican los logs
-/home/jboss
+
+
+
 
 
 >### Delete all of an application.
@@ -152,7 +158,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 ```
 
 
->### Create APP. Change de IP of database
+>### Create APP JBOSS Server Tomcat. Change de IP of database
 ```
 oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.47 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
@@ -166,6 +172,22 @@ oc expose service aupair --name=aupair
 ```
 oc expose service aupair --name=aupair --hostname=aupair.sierrica.com
 ```
+
+>### Instalar Jenkins en Openshift
+```
+oc new-app openshift/jenkins-2-centos7
+oc expose service aupair --name=aupair
+```
+
+>### Cosas Openshift
+oc get pods
+oc rsh <pod>
+
+Dir donde se ubican los logs
+/home/jboss
+
+
+
 
 
 ## Cordova
@@ -269,6 +291,14 @@ Javier Sierra – [sierrica](https://twitter.com/sierrica_tauste) – sierrica@h
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 [https://github.com/sierrica/Aupair-link](https://github.com/sierrica/)
 
+
+
+
+# Okta company
+```
+sierrica-dev-621930
+https://dev-621930.oktapreview.com/login/login.htm
+```
 
 ## Contributing
 

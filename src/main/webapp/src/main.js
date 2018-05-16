@@ -64,7 +64,7 @@ var app = {
 		var that = this;
 		
 		$.ajax({
-			url: window.spring + '/credentials',
+			url: window.backendUrl + '/credentials',
 			method: 'get',
 			//dataType: 'text',
 			//dataType: 'json',

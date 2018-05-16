@@ -1,5 +1,7 @@
 package com.sierrica.exception;
 
+import java.util.Arrays;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,7 @@ public class ExceptionController {
 	
 	@ExceptionHandler(value={DataIntegrityViolationException.class})
     public ResponseEntity<ExceptionResponse> handleDataIntegrityViolationException (DataIntegrityViolationException ex) {
-		LOG.error(ex.getStackTrace().toString());
+		LOG.error(Arrays.toString(ex.getStackTrace()));
         ExceptionResponse response = new ExceptionResponse (HttpStatus.CONFLICT.value(), ex.getMessage());
         return new ResponseEntity<ExceptionResponse>(response, HttpStatus.CONFLICT);
     }
@@ -34,7 +36,7 @@ public class ExceptionController {
 	
 	@ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseEntity<ExceptionResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
-		LOG.error(ex.getStackTrace().toString());
+		LOG.error(Arrays.toString(ex.getStackTrace()));
         ExceptionResponse response = new ExceptionResponse (HttpStatus.BAD_REQUEST.value(), ex.getMessage());
         return new ResponseEntity<ExceptionResponse>(response, HttpStatus.BAD_REQUEST);
     }

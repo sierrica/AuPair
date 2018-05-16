@@ -58,14 +58,16 @@ private TokenProvider tokenProvider;
     	
     	Assert.notNull ("auhtProvider",  "Property auhtProvider' is required.");
     	
-    	switch (auhtProvider) {
+    	//switch (auhtProvider) {
         //case "local":  tokenProvider = new ;
         //         break;
-        case "okta": tokenProvider = new OktaProvider(oktaOAuth2Properties, oktaClientProperties);
-                 break;
-        default: tokenProvider = new OktaProvider(oktaOAuth2Properties, oktaClientProperties);
-        		 break;
-    	}
+        //case "okta":
+        //	tokenProvider = new TokenProviderOkta(oktaOAuth2Properties, oktaClientProperties);
+        //    break;
+        //default:
+        	tokenProvider = new TokenProviderOkta(oktaOAuth2Properties, oktaClientProperties);
+        //	break;
+    	//}
 
     }
     

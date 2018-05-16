@@ -136,7 +136,9 @@
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.udp.UDPNetSyslogConfig"> -->
 	    <!-- <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.TCPNetSyslogConfig"> Es necesario activarlo desde la web, por defecto esta deshabilitado -->
 			<host>${papertrailHost}</host>
-			<port>${papertrailPort}</port>
+			<!-- Da problemas -->
+			<!-- <port>${papertrailPort}</port> -->
+			<port>21848</port>
 			<sendLocalName>false</sendLocalName>
 			<sendLocalTimestamp>false</sendLocalTimestamp>
 			<maxMessageLength>102400</maxMessageLength>

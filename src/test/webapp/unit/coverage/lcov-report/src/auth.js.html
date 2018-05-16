@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src\auth.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> auth.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.25% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/80</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/79</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var $ = window.jQuery = require('jquery')
+const OktaAuth = require('@okta/okta-auth-js')
+var request = require('request')
+&nbsp;
+var authClient;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+var base64UrlToBase64 = function(b64u) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	return b64u.replace(/\-/g, '+').replace(/_/g, '/');</span>
+};
+&nbsp;
+var base64UrlToString = function(b64u) <span class="fstat-no" title="function not covered" >{</span>
+	  var b64 = <span class="cstat-no" title="statement not covered" >base64UrlToBase64(b64u);</span>
+<span class="cstat-no" title="statement not covered" >	  switch (b64.length % 4) {</span>
+	    case 0:
+<span class="cstat-no" title="statement not covered" >	      break;</span>
+	    case 2:
+<span class="cstat-no" title="statement not covered" >	      b64 += '==';</span>
+<span class="cstat-no" title="statement not covered" >	      break;</span>
+	    case 3:
+<span class="cstat-no" title="statement not covered" >	      b64 += '=';</span>
+<span class="cstat-no" title="statement not covered" >	      break;</span>
+	    default:
+<span class="cstat-no" title="statement not covered" >	      throw 'Not a valid Base64Url';</span>
+	  }
+	  var utf8 = <span class="cstat-no" title="statement not covered" >atob(b64);</span>
+<span class="cstat-no" title="statement not covered" >	  try {</span>
+<span class="cstat-no" title="statement not covered" >	    return decodeURIComponent(escape(utf8));</span>
+	  } catch (e) {
+<span class="cstat-no" title="statement not covered" >	    return utf8;</span>
+	  }
+	};
+&nbsp;
+&nbsp;
+&nbsp;
+export default {
+&nbsp;
+	setAuthClient(data) {
+<span class="cstat-no" title="statement not covered" >		authClient = new OktaAuth(data);</span>
+	},
+	getAuthClient() {
+<span class="cstat-no" title="statement not covered" >		return authClient;</span>
+  	},
+	
+  	login (email, pass, cb) {
+	  	var that = <span class="cstat-no" title="statement not covered" >this;</span>
+<span class="cstat-no" title="statement not covered" >	  	authClient.signIn({</span>
+	  		username: email,
+	  		password: pass
+	  	}).then(response =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	  		if (response.status === 'SUCCESS') {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	  			if (window.isCordovaApp) {</span>
+	  				var randomCharset = <span class="cstat-no" title="statement not covered" >'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';</span>
+	  				var state = <span class="cstat-no" title="statement not covered" >'';</span> var nonce = <span class="cstat-no" title="statement not covered" >'';</span>
+<span class="cstat-no" title="statement not covered" >	  				for (var c = 0, cl = randomCharset.length; c &lt; 64; ++c) {</span>
+<span class="cstat-no" title="statement not covered" >	  					state += randomCharset[Math.floor(Math.random() * cl)];</span>
+<span class="cstat-no" title="statement not covered" >	  					nonce += randomCharset[Math.floor(Math.random() * cl)];</span>
+	  				}
+	  				var oauthUrl = <span class="cstat-no" title="statement not covered" >authClient.options.url + '/oauth2/default/v1/authorize?' +</span>
+		            'client_id=' + authClient.options.clientId + '&amp;' +
+		            'nonce=' + nonce + '&amp;' +
+		            'redirect_uri=' + encodeURI(authClient.options.redirectUri) + '&amp;' +
+		            'response_mode=' + 'fragment' + '&amp;' +
+		            'response_type=' + 'id_token%20token' + '&amp;' +
+		            'sessionToken=' + response.sessionToken + '&amp;' +
+		            'scope=' + 'openid%20email%20profile' + '&amp;' +
+		            'state=' + state;
+        	 
+	  				//alert('ANTES INAPPBROWSER. Peticion para obtencion de token: ' + oauthUrl)
+	  				var browser = <span class="cstat-no" title="statement not covered" >window.cordova.InAppBrowser.open(oauthUrl, '_blank', 'location=no,clearsessioncache=yes,clearcache=yes');</span>
+<span class="cstat-no" title="statement not covered" >	  				browser.addEventListener('loadstart', (event) =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+	  					
+<span class="cstat-no" title="statement not covered" >	  					if (((event.url).indexOf(authClient.options.redirectUri) === 0)) {</span>
+<span class="cstat-no" title="statement not covered" >			                 browser.removeEventListener('exit', () =&gt; <span class="fstat-no" title="function not covered" >{})</span>;</span>
+<span class="cstat-no" title="statement not covered" >			                 browser.close();</span>
+			                 //alert('RESPUESTA DE OKTA CON EL ACCESS_TOKEN: ' + event.url)
+&nbsp;
+			                // No funciona este metodo mas corto porque en Cordova no soporta document.cookie empleado en el metodo parseFromUrl. Hay que implementar el metodo parseFromUrl y handleOAuthResponse manualmente
+			                /*authClient.token.parseFromUrl(event.url)
+		                	 	.then(function(token) {
+		                	 		alert('TOKEN ALMACENAR: ' + JSON.stringify(token))
+				                	authClient.tokenManager.add('my_access_token', token['token']);
+				                	authClient.tokenManager.add('my_id_token', token['id_token']);
+				                	cb(true)
+&nbsp;
+		                	 	}).fail(function(error) {
+		                	 		alert ("FALLO EN LA VALIDACION DEL TOKEN CON OKTA")
+		    			    		alert (error)
+		    			    		cb(false)
+		    			    });*/
+&nbsp;
+			                 const responseParameters = <span class="cstat-no" title="statement not covered" >((event.url).split('#')[1]).split('&amp;');</span>
+			                 const parsedResponse = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >			                 for (let i = 0; i &lt; responseParameters.length; i++)</span>
+<span class="cstat-no" title="statement not covered" >			                   parsedResponse[responseParameters[i].split('=')[0]] = responseParameters[i].split('=')[1];</span>
+			                 
+<span class="cstat-no" title="statement not covered" >			                 if (parsedResponse['state'] !== state) {</span>
+<span class="cstat-no" title="statement not covered" >			                	 alert('ERROR AUTENTINCACION OKTA. EL ESTADO DE LA CONTESTACION NO ES EL MISMO QUE SE ENVIA.')</span>
+<span class="cstat-no" title="statement not covered" >			                	 cb(JSON.stringify(parsedResponse))</span>
+			                 }
+			                 else <span class="cstat-no" title="statement not covered" >if (parsedResponse['access_token'] !== undefined  &amp;&amp;  parsedResponse['access_token'] !== null  &amp;&amp;  parsedResponse['id_token'] !== undefined  &amp;&amp;  parsedResponse['id_token'] !== null) {</span>
+			                	 var jwt = <span class="cstat-no" title="statement not covered" >authClient.token.decode(parsedResponse['id_token'])</span>
+			                	 var tokenDict = <span class="cstat-no" title="statement not covered" >{};</span>
+			                	 
+<span class="cstat-no" title="statement not covered" >			                	 tokenDict['token'] = {</span>
+			                		 accessToken: parsedResponse['access_token'],
+			                		 expiresAt: Number(parsedResponse['expires_in']) + Math.floor(Date.now()/1000),
+			                		 tokenType: parsedResponse['token_type'],
+			                		 scopes: 'openid email profile',
+			                		 authorizeUrl: authClient.options.url + '/oauth2/default/v1/authorize',
+			                		 userinfoUrl: authClient.options.url + '/oauth2/default/v1/userinfo'
+			                	 };
+<span class="cstat-no" title="statement not covered" >			                	 tokenDict['id_token'] = {</span>
+			                		 idToken: parsedResponse['id_token'],
+			                		 claims: jwt.payload,
+			                		 expiresAt: jwt.payload.exp,
+			                		 scopes: 'openid email profile',
+			                		 authorizeUrl: authClient.options.url + '/oauth2/default/v1/authorize',
+			                		 issuer: authClient.options.issuer,
+			                		 clientId: authClient.options.clientId
+			                	 };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			                	 authClient.token.verify(tokenDict['id_token'], nonce, true)</span>
+			                	 	.then(function(token) <span class="fstat-no" title="function not covered" >{</span>
+			                	 		//alert('TOKEN ALMACENAR: ' + JSON.stringify(tokenDict))
+<span class="cstat-no" title="statement not covered" >			                	 		tokenDict['id_token'] = token;</span>
+<span class="cstat-no" title="statement not covered" >					                	authClient.tokenManager.add('my_access_token', tokenDict['token']);</span>
+<span class="cstat-no" title="statement not covered" >					                	authClient.tokenManager.add('my_id_token', tokenDict['id_token']);</span>
+<span class="cstat-no" title="statement not covered" >					                	cb(true)</span>
+&nbsp;
+			                	 	}).fail(function(error) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			                	 		alert ("FALLO EN LA VALIDACION DEL TOKEN CON OKTA")</span>
+<span class="cstat-no" title="statement not covered" >			    			    		alert (error)</span>
+<span class="cstat-no" title="statement not covered" >			    			    		cb(false)</span>
+			    			    	});
+			                 }
+			                 else {
+<span class="cstat-no" title="statement not covered" >			                	alert('ERROR DESCONOCIDO AUTENTINCACION OKTA. EL ESTADO DE LA CONTESTACION NO ES EL MISMO QUE SE ENVIA.')</span>
+<span class="cstat-no" title="statement not covered" >			                	cb(event.url)</span>
+			                 }
+		            	 }
+	  				});
+        	 
+<span class="cstat-no" title="statement not covered" >		             browser.addEventListener('exit', function (event) <span class="fstat-no" title="function not covered" >{</span></span>
+		            	 //alert('SALIENDO DEL EXIT DEL EVENTO ')
+		             });
+	  			}
+	  			// No Cordova
+	  			else {
+<span class="cstat-no" title="statement not covered" >	  				console.log (authClient)</span>
+<span class="cstat-no" title="statement not covered" >	  				console.log (response)</span>
+	  				
+<span class="cstat-no" title="statement not covered" >			    	authClient.token.getWithoutPrompt({</span>
+			            responseType: ['id_token', 'token'],
+			            scopes: ['openid', 'email', 'profile'],
+			            sessionToken: response.sessionToken
+			    	}).then(tokens =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			    		authClient.tokenManager.add('my_id_token', tokens[0]);</span>
+<span class="cstat-no" title="statement not covered" >			    		authClient.tokenManager.add('my_access_token', tokens[1]);</span>
+<span class="cstat-no" title="statement not covered" >			    		cb(true)</span>
+			    	}).fail(err =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			    		alert ("EN EL ELSE DEL TOKEN DE OKTA")</span>
+<span class="cstat-no" title="statement not covered" >			    		console.log (err)</span>
+<span class="cstat-no" title="statement not covered" >			    		cb(JSON.stringify(err))</span>
+			    	});
+	  			}
+	  		}
+	  		else {
+<span class="cstat-no" title="statement not covered" >	  			alert ("EN EL ELSE DEL LOGUIN DE OKTA")</span>
+<span class="cstat-no" title="statement not covered" >	  		    cb(response)</span>
+	  		}
+	  	}).fail(err =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	  		console.log ("EN EL FAIL DEL LOGUIN DE OKTA")</span>
+<span class="cstat-no" title="statement not covered" >	  		console.log (err)</span>
+	  		(err.message == 'Authentication failed')   ?   cb ('401')   :   cb (err);
+	  	});
+    },
+&nbsp;
+&nbsp;
+    getToken () {
+<span class="cstat-no" title="statement not covered" >    	return authClient.tokenManager.get('my_access_token')</span>
+    },
+&nbsp;
+    logout (cb) {
+<span class="cstat-no" title="statement not covered" >    	if (cb)</span>
+<span class="cstat-no" title="statement not covered" >    		cb()</span>
+<span class="cstat-no" title="statement not covered" >    	this.onChange(false)</span>
+<span class="cstat-no" title="statement not covered" >    	return authClient.signOut();</span>
+    },
+&nbsp;
+    loggedIn () {
+<span class="cstat-no" title="statement not covered" >    	return !!authClient.tokenManager.get('my_access_token')</span>
+		/*authClient.session.exists().then(function(exists) {
+			cb(exists)
+		 });*/
+    },
+  
+    getEmail () {
+<span class="cstat-no" title="statement not covered" >    	return authClient.tokenManager.get('my_id_token').claims.email;</span>
+    },
+    getUsername () {
+<span class="cstat-no" title="statement not covered" >    	return authClient.tokenManager.get('my_id_token').claims.preferred_username;</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Apr 12 2018 09:22:34 GMT+0200 (Romance Summer Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
