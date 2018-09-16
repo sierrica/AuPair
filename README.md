@@ -164,7 +164,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP JBOSS Server Tomcat. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.113.252 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.112.137 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route
