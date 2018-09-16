@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="postgres-jdbc-165e11660c3-3bf597e43eaa48b9" provider="postgresql" driver="postgres-jdbc" name="AuPair - Dev" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="aupair" url="jdbc:postgresql://localhost:5432/aupair" user="postgres" type="dev">
+			<property name="connectTimeout" value="20"/>
+			<property name="loginTimeout" value="20"/>
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="port" value="22"/>
+				<property name="implementation" value="jsch"/>
+				<property name="authType" value="PASSWORD"/>
+			</network-handler>
+			<network-handler type="CONFIG" id="postgre_ssl" enabled="false" save-password="false"/>
+		</connection>
+	</data-source>
+	<filters/>
+</data-sources>

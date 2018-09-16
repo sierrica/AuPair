@@ -19,13 +19,16 @@ public class Credentials {
 	@JsonProperty(value="clientId", index=1, required=false)
 	private String clientId;
 	
-	@JsonProperty(value="issuer", index=2, required=false)
+//	@JsonProperty(value="client_id", index=2, required=false)
+//	private String client_id;
+	
+	@JsonProperty(value="issuer", index=3, required=false)
 	private String issuer;
 	
-	@JsonProperty(value="url", index=3, required=false)
+	@JsonProperty(value="url", index=4, required=false)
 	private String url;
 	
-	@JsonProperty(value="redirectUri", index=4, required=false)
+	@JsonProperty(value="redirectUri", index=5, required=false)
 	private String redirectUri;
 
 

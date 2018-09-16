@@ -36,6 +36,7 @@ private static final String OKTAERROR1 = "E0000001";
     public Credentials getCredentials() {
     	Credentials credentials = new Credentials("okta");
     	credentials.setClientId (oktaOAuth2Properties.getClientId());
+    	//credentials.setClient_id (oktaOAuth2Properties.getClientId());
     	credentials.setIssuer (oktaOAuth2Properties.getIssuer());
     	credentials.setUrl (oktaOAuth2Properties.getIssuer().replaceAll("/oauth2/.*", ""));
     	credentials.setRedirectUri (oktaOAuth2Properties.getRedirectUri());

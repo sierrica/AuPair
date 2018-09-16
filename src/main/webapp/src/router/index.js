@@ -25,6 +25,7 @@ export default new Router({
 		{
 		    path: '*',
 		    redirect: '/dashboard',
+		    //redirect: 'signin',
 		},
 		{
 			path: '/dashboard',
@@ -57,7 +58,7 @@ export default new Router({
 function requireAuth (to, from, next) {
 	if ( ! auth.loggedIn()) {
 		next({
-			path: '/signup'
+			path: '/signin'
 		})
 	}
 	else {

@@ -3,6 +3,10 @@ es necesario actalizar vue-loader, optimize-css-assets-webpack-plugin, webpack-d
 Ademas es necesario instalar tambien 2.0.10.
 
 
+Cambiar de 192.168.0.140 a 192.168.1.140. Cambiar tambien en Okta.
+Probar Parcel en lugar de webpack. Hacerlo compatible a ambos.
+
+
 # AuPair Web App
 App for AuPairs 
 
@@ -160,7 +164,7 @@ oc new-app -e POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRES
 
 >### Create APP JBOSS Server Tomcat. Change de IP of database
 ```
-oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.36.47 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
+oc new-app -e PLATFORM=openshift NODE_ENV=production JASYPT_PASSWORD=tauste POSTGRESQL_URL=10.131.113.252 POSTGRESQL_USER=sierrica -e POSTGRESQL_PASSWORD=tauste -e POSTGRESQL_DATABASE=aupair registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift~https://github.com/sierrica/AuPair.git
 ```
 
 >### Expose route

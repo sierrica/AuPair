@@ -1,5 +1,6 @@
 var $ = window.jQuery = require('jquery')
 const OktaAuth = require('@okta/okta-auth-js')
+//const OktaAuth = require('@okta/okta-auth-js/jquery')
 var request = require('request')
 
 var authClient;
